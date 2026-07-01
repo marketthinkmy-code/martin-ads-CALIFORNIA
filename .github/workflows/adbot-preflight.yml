@@ -8,7 +8,7 @@ name: adbot · preflight (branch, manual)
 on:
   workflow_dispatch: {}
   push:
-    branches: ["claude/sweet-curie-b6vql4"]
+    branches: ["claude/meta-adbot-new-project-e6zd1l"]
     paths:
       - "config/**"
       - "prompts/**"
