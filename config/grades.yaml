@@ -1,0 +1,99 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# adbot — batch config: "成績單" angle (social-proof / real growth results)
+# Same account/page/pixel/targeting as config.yaml; only the creatives folder, budget,
+# and per-batch identity (label + state_key) differ so this campaign is fully separate
+# from the main 1-1-10 (which keeps label "1-1-10" / state_key "entities").
+#
+# ⚠️ TODO(california): drive.creatives_folder_id below is a PLACEHOLDER pointing at the
+# California creatives folder. Set up the California 成績單 (social-proof) content folder
+# (single images + carousel subfolders) and point this at it before building. Platform IDs
+# are already California's, so this config can never touch the MY account.
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  ad_account_id: "act_1629566827721449"
+  page_id: "1180683238455992"
+  instagram_user_id: "17841415309062626"   # set null to fall back to the Page's linked IG if Meta rejects the actor
+  pixel_id: "1921735088376759"
+
+  objective: "OUTCOME_SALES"
+  optimization_goal: "OFFSITE_CONVERSIONS"
+  conversion_event: "COMPLETE_REGISTRATION"
+  special_ad_categories: []
+
+  lead_destination:
+    type: "WEBSITE"
+    link_url: "https://kidsgrowthformula.com/webinar-main-page"
+  conversion_domain: "https://kidsgrowthformula.com/"
+  call_to_action: "LEARN_MORE"
+  url_tags: "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+
+  budget:
+    level: "CAMPAIGN"
+    daily_amount_myr: 50                   # small-budget test (operator: 50-100/day)
+    currency: "MYR"
+    adset_min_spend_myr: 50
+
+  targeting:                               # identical broad setup to config.yaml
+    countries: ["US"]
+    age_min: 25
+    age_max: 65
+    advantage_audience: 1
+    locales: [1004]
+    excluded_custom_audiences:
+      - "120236056842490259"               # US 15days complete registration
+    # ⚠️ City-level geo not supported by code — set CA cities manually in Ads Manager (see config.yaml).
+
+  build:
+    creatives_per_adset: 10
+    activate_after_build: false            # build PAUSED; activate after review
+    label: "成績單"                         # campaign name -> "MARTIN-CA | 成績單"
+    state_key: "entities_grades"           # separate state file so it never touches the main campaign
+
+naming:
+  prefix: "MARTIN-CA"
+  weekly_off_label: "ADBOT_WEEKLY_OFF"
+
+drive:
+  # ⚠️ TODO(california): set up the California 成績單 content folder and point this at it.
+  # Placeholder = California creatives folder.
+  creatives_folder_id: "1lFIYt6Df9jdPu12lRn0R00ZKPMdnoT4z"
+  carousel_subfolder_marker: "carousel"     # matches a "CAROUSEL" subfolder
+  script_sidecar_ext: ".txt"
+
+google_docs:
+  caption_log_doc_id: ""
+  idea_backlog_doc_id: ""
+
+notion:                                    # same Notion DB; captions matched by Content ID
+  enabled: true
+  database_id: "4bb82b42449682c294e881448aa21435"
+  brand: "Martin California"
+  default_status: "In Review"
+  default_type: "Caption"
+  captions_source: true
+  require_status: ""
+
+kpi:
+  cpl_threshold_myr: 100.00
+  cpl_min_spend_myr: 100.00
+  cpl_lookback: "week_thu"
+  pause_zero_lead_after_spend: true
+  cpl_hold: []
+
+cpa:
+  enabled: true
+  spreadsheet_id: "1DsKtcDpsWp3Njfah6Fw3PBizhGiy017ULw5qKeV-RSA"
+  sales_tab: "🇺🇸 Paid Student List ($799)"
+  price_myr: 997.00
+  target_myr: 1000.00
+  healthy_max_myr: 1300.00
+  max_acceptable_myr: 1700.00
+  hard_stop_myr: 2200.00
+  conversion_days: 14
+  min_spend_myr: 1000.00
+
+schedule:
+  timezone: "America/Los_Angeles"
+  # weekly_off / weekly_on: NOT SET YET (see config.yaml)
+  monitor_interval_hours: 1

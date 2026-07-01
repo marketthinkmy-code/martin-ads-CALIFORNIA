@@ -1,0 +1,109 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# adbot — non-secret operator config for martin-ads-california
+# Brand: Martin California ·《兒童長高方程式》· 馬丁藥師 (kids-growth conditioning course)
+# Market: California / North-American Chinese parents. Ad copy language: 繁體中文.
+# Secrets live in .env (see .env.example).  `python -m adbot doctor` validates this file.
+#
+# 1:1 clone of the martin-ads-MY template — code, guardrails, and cron schedules are
+# UNCHANGED; only the values below are project-specific.
+# objective OUTCOME_SALES / OFFSITE_CONVERSIONS / COMPLETE_REGISTRATION (same as template).
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  ad_account_id: "act_1629566827721449"    # Martin California ad account
+  page_id: "1180683238455992"              # FB Page the ads run under
+  instagram_user_id: "17841415309062626"   # IG actor for IG placements. NOTE: this IG must be ASSIGNED TO THIS AD ACCOUNT (Business Settings -> Accounts -> Instagram) or Meta rejects it as an explicit actor. If build fails on the IG actor, set this to null to fall back to the Page's linked IG.
+  pixel_id: "1921735088376759"             # pixel / dataset id for conversion tracking
+
+  objective: "OUTCOME_SALES"             # confirmed same as template
+  optimization_goal: "OFFSITE_CONVERSIONS"   # "Maximize number of conversions"
+  conversion_event: "COMPLETE_REGISTRATION"  # Ads Manager "Complete registration" (custom_event_type)
+  special_ad_categories: []              # none (kids-growth education — not a restricted category)
+
+  lead_destination:
+    type: "WEBSITE"                      # WEBSITE | INSTANT_FORM | MESSENGER | WHATSAPP
+    link_url: "https://kidsgrowthformula.com/webinar-main-page"
+  conversion_domain: "https://kidsgrowthformula.com/"   # bare domain derived = kidsgrowthformula.com (verify it in Meta Business settings)
+  call_to_action: "LEARN_MORE"           # confirmed same as template
+  url_tags: "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+
+  budget:
+    level: "CAMPAIGN"                    # CBO — campaign-level budget
+    daily_amount_myr: 100                # CBO daily budget (MYR) — operator runs this account in MYR
+    currency: "MYR"                      # confirmed: ads billed in MYR
+    adset_min_spend_myr: 50              # per-ad-set minimum daily spend (>=50), same as template
+
+  targeting:
+    # Advantage+ audience ON makes age a SUGGESTION (min 25), not a hard cap — do NOT raise
+    # age_min as a hard floor here or Meta rejects it.
+    countries: ["US"]                    # country-level = United States
+    age_min: 25                          # Advantage+ suggestion floor (not a hard cap)
+    age_max: 65
+    advantage_audience: 1                # Advantage+ audience ON (broad; creative hook does the targeting)
+    locales: [1004]                      # confirmed: 1004 = Chinese (All)
+    excluded_custom_audiences:           # exclude existing registrants (reach fresh prospects)
+      - "120236056842490259"             # US 15days complete registration (pixel/website CA)
+    # ─────────────────────────────────────────────────────────────────────────
+    # ⚠️ CITY-LEVEL TARGETING NOT SUPPORTED BY THE CODE (kept unchanged per spec).
+    # The California audience framework requires CITY-level geo to avoid wasting
+    # budget on non-Chinese reach (state-level = high CPL). The adbot Targeting model
+    # only emits geo_locations.countries, so set the cities MANUALLY in Ads Manager
+    # AFTER build, before activating. Recommended Chinese-dense CA cities:
+    #   Arcadia · San Marino · San Gabriel · Monterey Park · Cupertino · Fremont · Irvine
+    # geo_cities: ["Arcadia, CA", "San Marino, CA", "San Gabriel, CA", "Monterey Park, CA", "Cupertino, CA", "Fremont, CA", "Irvine, CA"]   # documentation only — NOT read by the code
+    # ─────────────────────────────────────────────────────────────────────────
+
+  build:
+    creatives_per_adset: 10              # the "N" in 1-1-N
+    activate_after_build: false          # SAFETY: batch builds create everything PAUSED — you activate after review (no spend until then)
+
+naming:
+  prefix: "MARTIN-CA"                     # name prefix scoping every entity this bot creates
+  weekly_off_label: "ADBOT_WEEKLY_OFF"   # structural — do not change
+
+drive:
+  # California creatives folder (馬丁藥師 Drive -> Ads Content -> 2026 -> California).
+  # Drop this batch's videos / single images / a "carousel" subfolder here. Must be readable
+  # by the build service account.
+  creatives_folder_id: "1lFIYt6Df9jdPu12lRn0R00ZKPMdnoT4z"
+  carousel_subfolder_marker: "carousel"     # matches a CAROUSEL subfolder
+  script_sidecar_ext: ".txt"                # optional per-asset .txt brief (same basename)
+
+google_docs:
+  caption_log_doc_id: ""                 # empty -> auto-create on first write
+  idea_backlog_doc_id: ""                # empty -> auto-create on first write
+
+notion:                                  # Notion content DB = single source of truth for ad copy
+  enabled: true                          # needs NOTION_API_KEY (repo secret) + DB shared with the integration
+  database_id: "4bb82b42449682c294e881448aa21435"   # 🎬 MARTIN Content Pipeline Template (same DB as MY)
+  brand: "Martin California"
+  default_status: "In Review"            # Status set on each new row (Idea/Draft/In Review/Approved/Published)
+  default_type: "Caption"                # Type when kind isn't video/carousel/single_image
+  captions_source: true                  # build READS caption+headline FROM Notion (by Content ID) — no second LLM version
+  require_status: ""                      # use the Notion row regardless of Status (no Approved gate)
+
+kpi:
+  cpl_threshold_myr: 100.00              # pause an ad above this CPL (MYR)
+  cpl_min_spend_myr: 100.00              # only judge an ad once it has spent >= this (MYR)
+  cpl_lookback: "week_thu"              # week-to-date from Thursday (the weekly ON/reset)
+  pause_zero_lead_after_spend: true      # spent >= cpl_min_spend with 0 results -> infinite CPL -> pause
+  cpl_hold: []                           # ad-name substrings temporarily exempt from auto-pause
+
+cpa:                                     # cost per real PAID acquisition (joins the paid-list sheet)
+  enabled: true
+  spreadsheet_id: "1DsKtcDpsWp3Njfah6Fw3PBizhGiy017ULw5qKeV-RSA"   # Paid Student List sheet (share with the SA email)
+  sales_tab: "🇺🇸 Paid Student List ($799)"   # California paid-list tab
+  price_myr: 997.00                      # course price (USD 997; the sheet's Amount column overrides per row)
+  target_myr: 1000.00                    # primary target CPA (MYR)
+  healthy_max_myr: 1300.00               # end of healthy range (NOT an auto-pause line)
+  max_acceptable_myr: 1700.00            # above here -> pause candidate after diagnosis
+  hard_stop_myr: 2200.00                 # above here (with real sales) -> auto-pause
+  conversion_days: 14                    # don't judge CPA / 'no sales' until this old
+  min_spend_myr: 1000.00                 # need >= this spend before a CPA verdict is fair
+
+schedule:                                # informational; the real schedule lives in .github/workflows (UNCHANGED)
+  timezone: "America/Los_Angeles"        # GMT-7/-8 (Pacific) — confirmed
+  # weekly_off / weekly_on: NOT SET YET — operator will confirm the day/time before enabling
+  # the weekly OFF/ON workflows. The cron in .github/workflows is unchanged from the template;
+  # adjust the cron expressions there once the schedule is decided.
+  monitor_interval_hours: 1
