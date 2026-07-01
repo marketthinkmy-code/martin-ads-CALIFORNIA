@@ -36,7 +36,7 @@ meta:
 
   targeting:                               # identical broad setup to config.yaml
     countries: ["US"]
-    age_min: 25
+    age_min: 35                          # suggestion floor; if Meta rejects with advantage_audience=1, set it to 0 or lower age_min to 25
     age_max: 65
     advantage_audience: 1
     locales: [1004]

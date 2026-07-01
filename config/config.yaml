@@ -37,7 +37,10 @@ meta:
     # Advantage+ audience ON makes age a SUGGESTION (min 25), not a hard cap — do NOT raise
     # age_min as a hard floor here or Meta rejects it.
     countries: ["US"]                    # country-level = United States
-    age_min: 25                          # Advantage+ suggestion floor (not a hard cap)
+    age_min: 35                          # suggestion floor (Advantage+ ON treats this as a suggestion, not a hard cap)
+    # ⚠️ Meta previously REJECTED advantage_audience=1 together with a HARD age_min=35
+    #    ("add a higher minimum age as a suggestion instead"). If build fails on age, either
+    #    set advantage_audience: 0 (hard 35-65) or lower age_min back to 25.
     age_max: 65
     advantage_audience: 1                # Advantage+ audience ON (broad; creative hook does the targeting)
     locales: [1004]                      # confirmed: 1004 = Chinese (All)
