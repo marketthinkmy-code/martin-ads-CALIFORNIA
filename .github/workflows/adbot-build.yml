@@ -23,7 +23,7 @@ on:
         type: boolean
         default: false
   push:
-    branches: ["claude/sweet-curie-b6vql4"]
+    branches: ["claude/meta-adbot-new-project-e6zd1l"]
     paths:
       - ".github/workflows/adbot-build.yml"
 
