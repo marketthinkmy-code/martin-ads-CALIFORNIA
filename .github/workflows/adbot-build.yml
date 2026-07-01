@@ -1,5 +1,6 @@
 name: adbot · build (1-1-N, PAUSED)
 
+# (re-run trigger: targeting fixed to Advantage+ ON + age 25 suggestion)
 # Real build of a 1-1-N batch: 1 CBO campaign + 1 broad ad set + N ads, ALL PAUSED
 # (build.activate_after_build is false -> nothing delivers, ZERO spend until you activate).
 # Pick the batch with the `config_file` input (config.yaml = JUNE, grades.yaml = 成绩单, …).
