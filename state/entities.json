@@ -1,1 +1,27 @@
-{}
+{
+  "campaign_id": "120246668003050259",
+  "adset_id": "120246668003800259",
+  "ad_ids": [
+    "120246668013600259",
+    "120246668016950259",
+    "120246668021010259",
+    "120246668024620259",
+    "120246668029750259",
+    "120246668033830259",
+    "120246668037020259",
+    "120246668040670259",
+    "120246668045610259"
+  ],
+  "built_content_ids": [
+    "martin_26_video_10_california",
+    "martin_26_video_1_california",
+    "martin_26_video_2_california",
+    "martin_26_video_3_california",
+    "martin_26_video_4_california",
+    "martin_26_video_5",
+    "martin_26_video_6_california",
+    "martin_26_video_7",
+    "martin_26_video_9_california"
+  ],
+  "created_at": "2026-06-30T10:20:40+00:00"
+}
