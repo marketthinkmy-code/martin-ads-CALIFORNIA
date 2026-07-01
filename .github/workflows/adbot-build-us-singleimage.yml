@@ -5,13 +5,16 @@ name: adbot · build-us-singleimage (1-1-6 × 2, PAUSED)
 # (1-1-6 D/E = 2 campaigns × 6 ads). Captions READ from Notion by Content ID.
 # activate_after_build is false -> ZERO spend until you activate.
 #
-# ⚠️ MANUAL DISPATCH ONLY (no push trigger). The Meta account was temporarily restricted
-# from a dense burst of writes, so this build is intentionally NOT auto-triggered — run it
-# from the Actions tab (workflow_dispatch) only after the account is unblocked and spaced
-# out from other Meta writes, to avoid re-tripping the anti-abuse block.
+# Triggers on manual dispatch or when THIS file changes on the dev branch (same mechanism as
+# adbot-build-us.yml). Builds are PAUSED; the 7/2 12am Pacific schedule + activation is applied
+# separately after the build via the Meta API.
 
 on:
   workflow_dispatch: {}
+  push:
+    branches: ["claude/meta-adbot-new-project-e6zd1l"]
+    paths:
+      - ".github/workflows/adbot-build-us-singleimage.yml"
 
 concurrency:
   group: adbot-build-us-singleimage
