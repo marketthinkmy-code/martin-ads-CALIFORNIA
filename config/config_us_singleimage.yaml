@@ -1,0 +1,99 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# adbot — US SINGLE-IMAGE 1-1-6 × 2 batch (run with: build_all)
+# 12 single images in the "SINGLE IMAGE US" Drive folder, split into 2 subfolders of 6.
+# build_all reads each SUBFOLDER and creates one PAUSED CBO campaign per subfolder,
+# named "MARTIN-CA | <subfolder>":
+#   1-1-6 D 體質飲食睡眠 · 1-1-6 E 基因青春期同齡
+# Same account/page/pixel/targeting/KPI/CPA as config.yaml. Captions READ from Notion by
+# Content ID (us_d1_absorption … us_e6_shorter_peers_b) — the 繁體 versions of the MY
+# single-image captions, ad names 沿用 from the MY single-image ad names. Everything PAUSED.
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  ad_account_id: "act_1629566827721449"
+  page_id: "1180683238455992"
+  instagram_user_id: "17841415309062626"   # set null to fall back to the Page's linked IG if Meta rejects the actor
+  pixel_id: "1921735088376759"
+
+  objective: "OUTCOME_SALES"
+  optimization_goal: "OFFSITE_CONVERSIONS"
+  conversion_event: "COMPLETE_REGISTRATION"
+  special_ad_categories: []
+
+  lead_destination:
+    type: "WEBSITE"
+    link_url: "https://kidsgrowthformula.com/webinar-main-page"
+  conversion_domain: "https://kidsgrowthformula.com/"
+  call_to_action: "LEARN_MORE"
+  url_tags: "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+
+  budget:
+    level: "CAMPAIGN"
+    daily_amount_myr: 100                   # per-campaign CBO daily budget (2 campaigns × 100 = 200 MYR/day once ALL活; adjust before activating)
+    currency: "MYR"
+    adset_min_spend_myr: 50
+
+  targeting:                               # identical broad setup to config.yaml
+    countries: ["US"]
+    age_min: 25                            # Advantage+ suggestion floor (hard 35 is rejected with advantage_audience=1)
+    age_max: 65
+    advantage_audience: 1
+    locales: [1004]
+    excluded_custom_audiences:
+      - "120236056842490259"               # US 15days complete registration
+    # ⚠️ City-level geo not supported by code — set CA cities + Age 35-65 manually in Ads Manager (see config.yaml).
+
+  build:
+    creatives_per_adset: 6                  # the "N" in 1-1-6
+    activate_after_build: false            # SAFETY: every campaign built PAUSED — zero spend until you activate
+    label: "us-si"                          # placeholder; build_all overrides it per subfolder with the subfolder name
+    state_key: "entities_us_si"             # base key; build_all appends each subfolder id -> one state file per campaign
+
+naming:
+  prefix: "MARTIN-CA"                       # campaigns -> "MARTIN-CA | 1-1-6 D 體質飲食睡眠" etc.
+  weekly_off_label: "ADBOT_WEEKLY_OFF"
+
+drive:
+  # "SINGLE IMAGE US (1-1-6 x2)" parent folder holding the 2 subfolders (D/E). Nested under the
+  # anyone-with-link reader US video folder, so the build service account can read it. build_all
+  # reads the 2 subfolders (D 體質飲食睡眠, E 基因青春期同齡); each holds 6 single images.
+  creatives_folder_id: "1lNpLcKHqKNToSzk5u5XwgRowTN7SjEn6"
+  carousel_subfolder_marker: "carousel"    # none of the single-image subfolders are carousels
+  script_sidecar_ext: ".txt"
+
+google_docs:
+  caption_log_doc_id: ""
+  idea_backlog_doc_id: ""
+
+notion:
+  enabled: true
+  database_id: "4bb82b42449682c294e881448aa21435"
+  brand: "Martin California"
+  default_status: "In Review"
+  default_type: "Caption"
+  captions_source: true                    # build READS caption+headline FROM Notion by Content ID
+  require_status: ""
+
+kpi:
+  cpl_threshold_myr: 100.00
+  cpl_min_spend_myr: 100.00
+  cpl_lookback: "week_thu"
+  pause_zero_lead_after_spend: true
+  cpl_hold: []
+
+cpa:
+  enabled: true
+  spreadsheet_id: "1DsKtcDpsWp3Njfah6Fw3PBizhGiy017ULw5qKeV-RSA"
+  sales_tab: "🇺🇸 Paid Student List ($799)"
+  price_myr: 997.00
+  target_myr: 1000.00
+  healthy_max_myr: 1300.00
+  max_acceptable_myr: 1700.00
+  hard_stop_myr: 2200.00
+  conversion_days: 14
+  min_spend_myr: 1000.00
+
+schedule:
+  timezone: "America/Los_Angeles"
+  # weekly_off / weekly_on: NOT SET YET (see config.yaml)
+  monitor_interval_hours: 1
