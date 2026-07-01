@@ -1,0 +1,19 @@
+{
+  "campaign_id": "120246712433770259",
+  "adset_id": "120246712433970259",
+  "ad_ids": [
+    "120246712436800259",
+    "120246712438330259",
+    "120246712440590259",
+    "120246712442400259",
+    "120246712443840259"
+  ],
+  "built_content_ids": [
+    "us_a1_doctor_genetic",
+    "us_a2_doctor_observe",
+    "us_a3_height_gap",
+    "us_a4_asian_kids_smaller",
+    "us_a5_destined_short"
+  ],
+  "created_at": "2026-07-01T08:11:02+00:00"
+}
