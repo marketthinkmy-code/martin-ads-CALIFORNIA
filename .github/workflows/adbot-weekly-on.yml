@@ -4,16 +4,15 @@ name: adbot · weekly ON (Thu 00:00 MYT)
 # Cron is UTC: Wed 16:00 UTC == Thu 00:00 Asia/Kuala_Lumpur (GMT+8).
 
 on:
-  schedule:
-    # Resume is the costliest tick to miss (ads stay paused = lost revenue), so fire densely right
-    # after midnight AND keep hourly backups. GitHub drops/delays scheduled runs, so we never rely
-    # on one tick. Re-running is a no-op: weekly-on clears the label as it resumes, so later
-    # attempts find nothing to do. Cron is UTC: Wed 16:xx == Thu 00:xx MYT.
-    - cron: "9 16 * * 3"       # Thu 00:09 MYT (Wed 16:09 UTC) — primary
-    - cron: "24 16 * * 3"      # Thu 00:24 MYT — backup
-    - cron: "39 16 * * 3"      # Thu 00:39 MYT — backup
-    - cron: "9 17 * * 3"       # Thu 01:09 MYT — backup
-    - cron: "9 18 * * 3"       # Thu 02:09 MYT — backup
+  # ⚠️ SCHEDULE DISABLED per operator ("每周 OFF/ON 先不要"). Paired with adbot-weekly-off.yml —
+  # the weekly cycle is NOT enabled yet; manual dispatch only. Un-comment BOTH schedule blocks
+  # (here and in adbot-weekly-off.yml) to turn the weekly OFF/ON cadence back on.
+  # schedule:
+  #   - cron: "9 16 * * 3"       # Thu 00:09 MYT (Wed 16:09 UTC) — primary
+  #   - cron: "24 16 * * 3"      # Thu 00:24 MYT — backup
+  #   - cron: "39 16 * * 3"      # Thu 00:39 MYT — backup
+  #   - cron: "9 17 * * 3"       # Thu 01:09 MYT — backup
+  #   - cron: "9 18 * * 3"       # Thu 02:09 MYT — backup
   workflow_dispatch:           # allow manual runs from the Actions tab
     inputs:
       dry_run:

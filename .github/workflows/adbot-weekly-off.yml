@@ -5,14 +5,14 @@ name: adbot · weekly OFF (Wed 15:00 MYT)
 # Cron is UTC: Wed 07:00 UTC == Wed 15:00 Asia/Kuala_Lumpur (GMT+8).
 
 on:
-  schedule:
-    # GitHub drops/delays scheduled runs (the 15:09 primary was dropped on 2026-06-24), so fire
-    # several times across the OFF window and let idempotency sort it out: each re-run pauses only
-    # still-live ads, and a fully-paused account is a clean no-op. Minutes kept off ":00"/":30".
-    - cron: "9 7 * * 3"        # Wed 15:09 MYT (primary)
-    - cron: "24 7 * * 3"       # Wed 15:24 MYT — backup
-    - cron: "39 7 * * 3"       # Wed 15:39 MYT — backup
-    - cron: "9 8 * * 3"        # Wed 16:09 MYT — last-chance backup
+  # ⚠️ SCHEDULE DISABLED per operator ("每周 OFF/ON 先不要"). The weekly OFF/ON cadence is NOT
+  # enabled yet — this workflow only runs on manual dispatch. To turn the weekly cycle back on,
+  # un-comment the schedule block below (and the matching one in adbot-weekly-on.yml).
+  # schedule:
+  #   - cron: "9 7 * * 3"        # Wed 15:09 MYT (primary)
+  #   - cron: "24 7 * * 3"       # Wed 15:24 MYT — backup
+  #   - cron: "39 7 * * 3"       # Wed 15:39 MYT — backup
+  #   - cron: "9 8 * * 3"        # Wed 16:09 MYT — last-chance backup
   workflow_dispatch:           # allow manual runs from the Actions tab
     inputs:
       dry_run:
