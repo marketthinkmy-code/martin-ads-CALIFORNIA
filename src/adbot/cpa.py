@@ -43,21 +43,25 @@ def find_columns(header: List[str]) -> Dict[str, int]:
     """Locate date / campaign / adset / ad / amount columns by fuzzy header match."""
     keys = [_hkey(h) for h in header]
 
-    def first(*needles_in_order) -> int:
+    def first(*needles_in_order, avoid=()) -> int:
         for needle in needles_in_order:                 # exact-ish matches first
             for i, k in enumerate(keys):
-                if k == needle:
+                if k == needle and not any(a in k for a in avoid):
                     return i
         for needle in needles_in_order:                 # then substring
             for i, k in enumerate(keys):
-                if needle in k:
+                if needle in k and not any(a in k for a in avoid):
                     return i
         return -1
 
     return {
         # 日期 (= "date", identical in Traditional & Simplified) matches the RM1997 tab's
-        # 報名日期 column; English names still win when present.
-        "date": first("createddate", "date", "日期"),
+        # 報名日期 column; English names still win when present. EXCLUDE any "Webinar date"
+        # column: the US Paid Student List tab labels a text column that way (values like
+        # "US 马丁药师 webinar_jun28" — a label, not a date). Without this guard the substring
+        # "date" matches "Webinar date" first, so every sale reads as undated and every CPA
+        # window collapses to 0 / ∞.
+        "date": first("createddate", "date", "日期", avoid=("webinar",)),
         # Prefer a UTM-tagged campaign column, but fall back to a plain "Campaign Name"
         # header (the Paid Student List (RM1997) tab labels it that way) so the sheet<->Meta
         # join still finds the campaign — without it the CPA gate silently matches 0 sales.
