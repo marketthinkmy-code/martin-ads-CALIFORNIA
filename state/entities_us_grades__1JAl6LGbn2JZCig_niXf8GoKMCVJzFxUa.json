@@ -1,0 +1,17 @@
+{
+  "campaign_id": "120247006954250259",
+  "adset_id": "120247006954540259",
+  "ad_ids": [
+    "120247006955870259",
+    "120247006956470259",
+    "120247006956910259",
+    "120247006957180259"
+  ],
+  "built_content_ids": [
+    "us_g1_measure_fluctuation",
+    "us_g2_nose_allergy",
+    "us_g3_meals_normal",
+    "us_g4_shorter_than_peers"
+  ],
+  "created_at": "2026-07-10T03:15:12+00:00"
+}

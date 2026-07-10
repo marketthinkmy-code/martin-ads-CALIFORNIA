@@ -214,5 +214,59 @@
     "kind": "image",
     "name": "US-D1-absorption.png",
     "uploaded_at": "2026-07-01T13:43:03+00:00"
+  },
+  "1ysQCcQW3H62oaDu63sxU0oKC0NHjkkC5": {
+    "meta_id": "40302cfed404b4b97502d5b7518753fc",
+    "kind": "image",
+    "name": "US-G4-shorter-than-peers.png",
+    "uploaded_at": "2026-07-10T03:15:01+00:00"
+  },
+  "1Xa68X5bh9w_AnnID_nwfLf88uSEnQacX": {
+    "meta_id": "4ebcff40a56da18b32021aaebbef4e29",
+    "kind": "image",
+    "name": "US-G3-meals-normal.png",
+    "uploaded_at": "2026-07-10T03:15:04+00:00"
+  },
+  "1NxIOac7D2I1cZgFWO0LGirqo6lkc2r2p": {
+    "meta_id": "b2c84904f580492af475a77fc95a0073",
+    "kind": "image",
+    "name": "US-G2-nose-allergy.png",
+    "uploaded_at": "2026-07-10T03:15:07+00:00"
+  },
+  "11qR166BcqEebzy91yjPaDVrxLtcqJ9cm": {
+    "meta_id": "e9b755f2be6c5cb37725c2b29f7e55cb",
+    "kind": "image",
+    "name": "US-G1-measure-fluctuation.png",
+    "uploaded_at": "2026-07-10T03:15:11+00:00"
+  },
+  "1oLPBRYGTXqLXM1WIl6I2_LXmQgyDmzdj": {
+    "meta_id": "a8bef946f1aa424b0c080f1d65c9e41a",
+    "kind": "image",
+    "name": "US-F5-shortterm-two-kids.png",
+    "uploaded_at": "2026-07-10T03:15:40+00:00"
+  },
+  "1zj-XH7TK8F7T9OlhsGYtrFdOOESeNOGZ": {
+    "meta_id": "32b31621fb6d3fde24c32a1cf719fd1a",
+    "kind": "image",
+    "name": "US-F4-longterm-two-kids.png",
+    "uploaded_at": "2026-07-10T03:15:44+00:00"
+  },
+  "195VEyoNdiDzzsJ2jnn3gNMeUWwTsSC1D": {
+    "meta_id": "c88a3da9b9c1409566487c926cf8baac",
+    "kind": "image",
+    "name": "US-F3-march-compare.png",
+    "uploaded_at": "2026-07-10T03:15:47+00:00"
+  },
+  "1Bq6AOWFq6PyVbB2cefI-S8NZHCkMfbTU": {
+    "meta_id": "67b5d070e667ff7767983f83580c2a0d",
+    "kind": "image",
+    "name": "US-F2-april-compare.png",
+    "uploaded_at": "2026-07-10T03:15:50+00:00"
+  },
+  "1LsBy87t2URDkiZ93DGBRUrNnP5abQkc8": {
+    "meta_id": "73987888178a1163c623a6c90962a778",
+    "kind": "image",
+    "name": "US-F1-parents-report.png",
+    "uploaded_at": "2026-07-10T03:15:53+00:00"
   }
 }
