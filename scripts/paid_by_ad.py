@@ -163,6 +163,19 @@ def main() -> None:
         print(f"  {w['life']:>3} /{w['60d']:>3} /{w['30d']:>3} /{w['14d']:>3} /{w['7d']:>3}  {live}  "
               f"{ad_norm[:44]:44}  [{camp[:26]}]")
 
+    # ── leaderboard: paid sales per AD SET (audience) ─────────────────────────
+    # Which AUDIENCE (UTM Ads Set, within its campaign) drove the most paid sales —
+    # the "winning top ad sets" view. Falls back to campaign-only when adset is blank.
+    by_adset = defaultdict(list)
+    for x in attributed:
+        aset = (x.adset or "").strip()
+        key = f"{(x.campaign or '?')[:34]}  ▸  {aset[:34]}" if aset else f"{(x.campaign or '?')[:34]}  ▸  (no adset)"
+        by_adset[key].append(x)
+    print("\n--- Paid sales per AD SET / audience (life / 60d / 30d) ---")
+    for key, rows in sorted(by_adset.items(), key=lambda kv: -len(kv[1]))[:20]:
+        w = _wins(rows, today)
+        print(f"  {w['life']:>3} /{w['60d']:>3} /{w['30d']:>3}   {key}")
+
     # ── scale table: every ACTIVE ad with spend + CPL + CPA ──────────────────
     print("\n--- ACTIVE ads — scale decisions (wk = since most-recent-Thursday) ---")
     print(f"  {'ad name':40} {'wk$':>6} {'reg':>4} {'CPL':>5}  {'p30':>3} {'p60':>3} "
