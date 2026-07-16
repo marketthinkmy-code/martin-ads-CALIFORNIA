@@ -55,10 +55,18 @@ class Targeting(BaseModel):
     # Custom-audience ids to EXCLUDE (existing leads / paid customers) so budget reaches fresh
     # prospects. With advantage_audience=1, age_min/age_max are treated by Meta as suggestions.
     excluded_custom_audiences: List[str] = Field(default_factory=list)
+    # State/region targeting: Meta region KEYS (e.g. "3847"=California). When set, the ad set
+    # targets only these states instead of the whole country — verified via scripts/geo_search.py.
+    # location_types home,recent = people who LIVE there or were recently there (fixes err #1870194).
+    regions: List[str] = Field(default_factory=list)
+    location_types: List[str] = Field(default_factory=lambda: ["home", "recent"])
 
     def to_spec(self) -> dict:
+        geo: dict = {"countries": self.countries, "location_types": self.location_types}
+        if self.regions:  # narrow to specific states when configured
+            geo["regions"] = [{"key": str(k)} for k in self.regions]
         spec = {
-            "geo_locations": {"countries": self.countries},
+            "geo_locations": geo,
             "age_min": self.age_min,
             "age_max": self.age_max,
             "targeting_automation": {"advantage_audience": self.advantage_audience},
