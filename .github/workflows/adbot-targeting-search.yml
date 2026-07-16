@@ -1,0 +1,31 @@
+name: adbot · targeting search (manual)
+
+# Manual, read-only: resolve Detailed Targeting keywords to REAL Meta targeting IDs
+# (interests / behaviors / demographics) via the Graph targetingsearch endpoint —
+# the ads MCP has no targeting-search tool and Meta ignores the `name` field on
+# write, so specs must be built from IDs verified here. No writes.
+
+on:
+  workflow_dispatch:
+    inputs:
+      queries:
+        description: "Pipe-separated keywords, e.g. Early childhood education|Milk|Motherhood"
+        required: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Targeting search
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          QUERIES: ${{ github.event.inputs.queries }}
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+        run: python scripts/targeting_search.py
