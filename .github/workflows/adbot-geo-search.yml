@@ -1,0 +1,31 @@
+name: adbot · geo search (region keys, read-only)
+
+# Manual, read-only: resolve US state names to Meta ad-geo region keys via the
+# adgeolocation search endpoint, so config can carry verified geo_locations.regions
+# keys instead of guessed ones. No writes.
+
+on:
+  workflow_dispatch:
+    inputs:
+      states:
+        description: "Pipe-separated US state names"
+        required: false
+        default: "California|Washington|Oregon|Nevada"
+
+jobs:
+  geo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Geo search
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          STATES: ${{ github.event.inputs.states }}
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+        run: python scripts/geo_search.py
