@@ -83,7 +83,7 @@ notion:                                  # Notion content DB = single source of 
   require_status: ""                      # use the Notion row regardless of Status (no Approved gate)
 
 kpi:
-  cpl_threshold_myr: 100.00              # pause an ad above this CPL (MYR)
+  cpl_threshold_myr: 85.00               # pause an ad above this CPL (MYR) — US threshold RM85 (operator 2026-07-16)
   cpl_min_spend_myr: 100.00              # only judge an ad once it has spent >= this (MYR)
   cpl_lookback: "last_3d"               # rolling last 3 days (operator changed from week_thu 2026-07-16)
   pause_zero_lead_after_spend: true      # spent >= cpl_min_spend with 0 results -> infinite CPL -> pause
