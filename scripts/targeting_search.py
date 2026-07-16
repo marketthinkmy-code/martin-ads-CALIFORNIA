@@ -35,12 +35,9 @@ def main() -> None:
         print(f"=== {q} ===")
         print(json.dumps(rows, indent=1, ensure_ascii=False))
 
-    # demographics (parents segments etc.) come from targetingbrowse, not search
-    res = g._request("GET", f"{acct}/targetingbrowse", params={"limit_type": "demographics"})
-    demo = [{"id": r.get("id"), "name": r.get("name"), "type": r.get("type"),
-             "path": " > ".join(r.get("path") or [])} for r in res.get("data", [])]
-    print("=== BROWSE demographics ===")
-    print(json.dumps(demo, indent=1, ensure_ascii=False))
+    # demographics (parents segments etc.) surface through targetingsearch too —
+    # e.g. QUERIES="Parents all" returns the family_statuses rows. No browse call:
+    # targetingbrowse rejects category-style limit_type values.
 
 
 if __name__ == "__main__":
