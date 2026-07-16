@@ -63,7 +63,7 @@ def main() -> None:
 
     ads = g._get_all(f"{SG_ACCT}/ads",
                      {"fields": "name,effective_status,creative{id,object_story_id,"
-                                "effective_object_story_id,video_id,object_type}",
+                                "effective_object_story_id,video_id,object_type,thumbnail_url}",
                       "limit": 500})
     print(f"SG account {SG_ACCT}: {len(ads)} ads pulled\n")
     idx = [(norm(a.get("name", "")), a) for a in ads]
@@ -75,7 +75,8 @@ def main() -> None:
         reusable = "✅ REUSABLE on US" if page == US_PAGE else f"⚠️ page {page} (verify US access)"
         return (f"      name={a.get('name','')!r}  status={a.get('effective_status')}\n"
                 f"      object_story_id={osid or '(none)'}  video_id={cr.get('video_id','?')}  "
-                f"type={cr.get('object_type','?')}\n      {reusable}")
+                f"type={cr.get('object_type','?')}\n"
+                f"      thumbnail_url={cr.get('thumbnail_url','?')}\n      {reusable}")
 
     for i, top in enumerate(KEEP, 1):
         nt = norm(top)
