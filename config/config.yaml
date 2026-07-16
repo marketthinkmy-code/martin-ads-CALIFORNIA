@@ -37,6 +37,12 @@ meta:
     # Advantage+ audience ON makes age a SUGGESTION (min 25), not a hard cap — do NOT raise
     # age_min as a hard floor here or Meta rejects it.
     countries: ["US"]                    # country-level = United States
+    # DEFAULT geo now narrows to the 4 operator states (verified Meta region keys via
+    # scripts/geo_search.py): 3847 California · 3890 Washington (state, NOT 3851 DC) ·
+    # 3880 Oregon · 3871 Nevada. Every build using targeting.to_spec() inherits this — no
+    # more manual state entry in Ads Manager. Set regions: [] to go back to whole-US.
+    regions: ["3847", "3890", "3880", "3871"]
+    location_types: ["home", "recent"]   # people who LIVE in / were recently in those states
     age_min: 25                          # Advantage+ suggestion floor (NOT a hard cap). Meta rejects a HARD age_min=35 with advantage_audience=1, and a 35 floor would exclude core 28-34 moms — so 25 + Advantage+ ON lets Meta find the right parents.
     age_max: 65
     advantage_audience: 1                # Advantage+ audience ON (broad; creative hook does the targeting)

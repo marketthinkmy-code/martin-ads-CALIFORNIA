@@ -37,7 +37,10 @@ PREFIX = "PNW"
 DAILY_MYR = 100
 START_TIME = os.environ.get("START_TIME", "").strip() or None
 
-US_GEO = {"countries": ["US"], "location_types": ["home", "recent"]}
+# Default geo = the 4 operator states (verified Meta region keys via scripts/geo_search.py):
+# 3847 California · 3890 Washington · 3880 Oregon · 3871 Nevada.
+US_GEO = {"countries": ["US"], "location_types": ["home", "recent"],
+          "regions": [{"key": "3847"}, {"key": "3890"}, {"key": "3880"}, {"key": "3871"}]}
 US_EXCL = [{"id": "120236056842490259"},   # US 15days complete registration
            {"id": "120220335292090259"},   # 60days complete registration
            {"id": "120240867576290259"},   # MARTIN US PAID CUSTOMER - APR 13
