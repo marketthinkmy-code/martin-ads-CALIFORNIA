@@ -62,9 +62,13 @@ class Targeting(BaseModel):
     location_types: List[str] = Field(default_factory=lambda: ["home", "recent"])
 
     def to_spec(self) -> dict:
-        geo: dict = {"countries": self.countries, "location_types": self.location_types}
-        if self.regions:  # narrow to specific states when configured
-            geo["regions"] = [{"key": str(k)} for k in self.regions]
+        # Meta rejects country + regions together ("locations conflict"): when specific
+        # states/regions are set, target ONLY the regions and drop the country.
+        if self.regions:
+            geo: dict = {"regions": [{"key": str(k)} for k in self.regions],
+                         "location_types": self.location_types}
+        else:
+            geo = {"countries": self.countries, "location_types": self.location_types}
         spec = {
             "geo_locations": geo,
             "age_min": self.age_min,
