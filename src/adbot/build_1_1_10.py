@@ -63,7 +63,9 @@ def creative_spec(settings: Settings, unit: Unit, caption: Dict[str, Any],
 def build(graph, settings: Settings, units: List[Unit],
           captions: Dict[str, Dict[str, Any]], *, dry_run: bool = False,
           label: str = "1-1-10", state_key: str = "entities",
-          start_time: Optional[str] = None) -> Dict[str, Any]:
+          start_time: Optional[str] = None,
+          targeting_override: Optional[Dict[str, Any]] = None,
+          adset_name: Optional[str] = None) -> Dict[str, Any]:
     log = get_logger()
     account = settings.meta.account_path
     m = settings.meta
@@ -76,9 +78,13 @@ def build(graph, settings: Settings, units: List[Unit],
         "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
     }
     adset_fields = {
-        "name": settings.naming.campaign_name(f"{label} | AdSet (Broad {(m.targeting.countries or ['MY'])[0]} {m.targeting.age_min}+)"),
+        "name": adset_name or settings.naming.campaign_name(f"{label} | AdSet (Broad {(m.targeting.countries or ['MY'])[0]} {m.targeting.age_min}+)"),
         "optimization_goal": m.optimization_goal, "billing_event": "IMPRESSIONS",
-        "promoted_object": m.promoted_object, "targeting": m.targeting.to_spec(),
+        "promoted_object": m.promoted_object,
+        # A caller can inject a fully-formed targeting spec (e.g. detailed-targeting IDs cloned
+        # from a proven live ad set — the only safe source of interest IDs, since Meta ignores
+        # the name field and silently accepts any existing ID); otherwise the broad config spec.
+        "targeting": targeting_override if targeting_override is not None else m.targeting.to_spec(),
         "status": "PAUSED",
     }
     if start_time:  # schedule delivery to begin at this ISO8601 time (with tz offset)
