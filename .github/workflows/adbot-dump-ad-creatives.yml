@@ -1,0 +1,26 @@
+name: adbot · dump ad creatives (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ad_ids:
+        description: "Comma-separated ad IDs"
+        required: true
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Dump ad creatives
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          AD_IDS: ${{ github.event.inputs.ad_ids }}
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+        run: python scripts/dump_ad_creatives.py
