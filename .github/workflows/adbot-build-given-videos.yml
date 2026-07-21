@@ -1,0 +1,39 @@
+name: adbot · build given videos (2×1-1-2, PAUSED)
+
+# Downloads the 2 operator-supplied Drive videos, uploads them into the US account,
+# and builds 4 ads (Parents 3-17+Engaged / Family & Relationships ad sets × Video3/Video4)
+# with the supplied captions + headlines + UTM url_tags. All PAUSED. Idempotent.
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: adbot-build-given-videos
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Build given-video ads (PAUSED)
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+        run: python scripts/build_given_videos.py
+      - name: Persist created entity IDs back to the branch
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add state/ || true
+          git commit -m "build-given-videos: persist created ad ids [skip ci]" || echo "no state change"
+          git push || echo "push skipped"
