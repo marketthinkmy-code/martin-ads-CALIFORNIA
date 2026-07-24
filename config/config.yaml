@@ -93,7 +93,9 @@ kpi:
   cpl_min_spend_myr: 100.00              # only judge an ad once it has spent >= this (MYR)
   cpl_lookback: "last_3d"               # rolling last 3 days (operator changed from week_thu 2026-07-16)
   pause_zero_lead_after_spend: true      # spent >= cpl_min_spend with 0 results -> infinite CPL -> pause
-  cpl_hold: []                           # ad-name substrings temporarily exempt from auto-pause
+  cpl_hold:                              # ad-name substrings temporarily exempt from auto-pause
+    - "华人孩子"                          # video1 华人孩子在美国很难长高 — lifetime #1 winner (30 sales), reopened 2026-07-24
+    - "多吃多動"                          # mar video6 多吃多動迷思 — proven winner, reopened 2026-07-24
 
 cpa:                                     # cost per real PAID acquisition (joins the paid-list sheet)
   enabled: true
