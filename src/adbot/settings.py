@@ -152,6 +152,10 @@ class KpiCfg(BaseModel):
     cpl_min_spend_myr: float = 80.0
     cpl_lookback: str = "last_3d"  # 'week_thu' = week-to-date from Thursday, or any Meta date_preset
     pause_zero_lead_after_spend: bool = True
+    # When False, CPL is COMPUTED + LOGGED but never auto-pauses (advisory only). The CPA
+    # hard-stop still auto-pauses proven money-losers. Registration cost is only a proxy —
+    # with cpl_autopause off, the operator/agent judges CPL+CPA and pauses manually.
+    cpl_autopause: bool = True
     cpl_hold: List[str] = Field(default_factory=list)  # ad-name substrings temporarily exempt from auto-pause
 
 
