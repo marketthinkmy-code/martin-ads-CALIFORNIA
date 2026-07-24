@@ -6,6 +6,10 @@ name: adbot · paid-by-ad (which ad to scale)
 
 on:
   workflow_dispatch: {}
+  schedule:
+    # Daily at 01:00 UTC = 09:00 MYT (morning check for the operator). Read-only report;
+    # tallies paid sales per ad so the reopened winners (华人孩子 / 多吃多動) can be tracked.
+    - cron: "0 1 * * *"
   push:
     branches: ["claude/sweet-curie-b6vql4"]
     paths:
