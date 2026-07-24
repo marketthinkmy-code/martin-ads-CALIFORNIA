@@ -23,6 +23,7 @@ OVER_THRESHOLD = "cpl_over_threshold"
 WITHIN_THRESHOLD = "within_threshold"
 NO_RESULTS_YET = "no_results_yet"
 MANUAL_HOLD = "manual_hold"  # owner asked to keep this ad running despite CPL
+CPL_ADVISORY = "cpl_high_advisory"  # CPL over threshold but auto-pause OFF — flagged, not paused
 
 def _week_start_thursday(today: dt.date) -> dt.date:
     """Most recent Thursday (the weekly ON/reset day) on or before `today`."""
@@ -195,6 +196,10 @@ def evaluate_account(graph, settings: Settings, *, cpa_ctx=None) -> List[AdDecis
                 cpl = (spend / results) if results else (math.inf if spend else None)
             else:
                 cpl_pause, cpl_reason, cpl = decide(spend, results, settings.kpi)
+                # Advisory mode: CPL never auto-pauses (only the CPA hard-stop below can).
+                # Keep the computed CPL for the log so high-CPL ads are still flagged.
+                if cpl_pause and not settings.kpi.cpl_autopause:
+                    cpl_pause, cpl_reason = False, CPL_ADVISORY
 
             cpa_val: Optional[float] = None
             n_sales, age = 0, None
