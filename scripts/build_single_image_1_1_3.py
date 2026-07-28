@@ -5,6 +5,9 @@ interest/behavior/family_status IDs cloned from live ad set 120247164684970259, 
 audience ON). Downloads each Drive PNG, uploads it into the US account (image_hash), builds
 campaign + ad set + 3 single-image ads with the operator-supplied captions + 🔴 headlines +
 UTM url_tags, ACTIVE. Idempotent via state.
+
+NOTE: the image files were copied into the SA-accessible creatives folder (the original
+uploads lived in a folder not shared with the build service account -> Drive 404).
 """
 from __future__ import annotations
 
@@ -100,15 +103,15 @@ IMG3_CAPTION = """明明天天照著美國人的方法養，孩子的身高到�
 📘《兒童長高方程式》免費線上講座，立即報名。"""
 
 IMAGES = [
-    {"key": "IMG1", "drive_id": "1wdKkFyrt24Ed3gEPOs9ZIIe76YMkc5_J",
+    {"key": "IMG1", "drive_id": "1kpR_bfCx4ETL5YD7fxDCketAg0-ghCwt",
      "ad_name": "Single image 1：跟著美國人吃，孩子卻停滯",
      "headline": "🔴 跟著美國人吃，孩子為什麼還是長不高？",
      "caption": IMG1_CAPTION},
-    {"key": "IMG2", "drive_id": "1wpyc6iDIPSdtRMuX-pd85P33YYKcpeQe",
+    {"key": "IMG2", "drive_id": "160PAxLZpbtyU5PxwNiQrwwSTutysaxau",
      "ad_name": "Single image 2：別照搬美式養育邏輯",
      "headline": "🔴 華人孩子，別再照搬美式養育邏輯",
      "caption": IMG2_CAPTION},
-    {"key": "IMG3", "drive_id": "16Ma5Dz18b8WLSWL0qQFf2LZoGN7gbfvH",
+    {"key": "IMG3", "drive_id": "1R0AKmWpeQkLCS2_oRs9fipY3NI89PVKO",
      "ad_name": "Single image 3：照美國方法養卻卡住",
      "headline": "🔴 天天照美國方法養，身高到底卡在哪？",
      "caption": IMG3_CAPTION},
