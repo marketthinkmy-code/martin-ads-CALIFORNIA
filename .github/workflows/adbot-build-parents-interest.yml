@@ -1,0 +1,39 @@
+name: adbot · build Parents-interest 1-1-2 (V11+V13, ACTIVE)
+
+# Builds a 1-1-2 campaign (CBO RM100/day) on the cloned Parents-interest audience with the
+# two operator videos (V11 孩子快發育了 / V13 一年比一年長得少), skill-written captions + UTM.
+# ACTIVE. Idempotent.
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: adbot-build-parents-interest
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Build Parents-interest 1-1-2 (ACTIVE)
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+        run: python scripts/build_parents_interest_1_1_2.py
+      - name: Persist created entity IDs back to the branch
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add state/ || true
+          git commit -m "build-parents-interest: persist created ids [skip ci]" || echo "no state change"
+          git push || echo "push skipped"
