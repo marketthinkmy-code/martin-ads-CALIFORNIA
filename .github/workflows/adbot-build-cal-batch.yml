@@ -1,0 +1,61 @@
+name: adbot · Build CAL creative batch (manual)
+
+# LIVE build in the California account. Creates 6 CBO campaigns + ad sets + 18 ads, all PAUSED.
+#
+# Assets are NOT committed here: the 52 files live once in the public martin-ads-SG repo and are
+# sparse-checked-out at build time, so CAL carries no 31MB duplicate that can drift.
+#
+# Copy comes from creatives/batch_2026_08.yaml under the `cal` key — Traditional (OpenCC s2twp,
+# Taiwan vocabulary), Southeast-Asian references replaced, 醫師 title dropped.
+#
+# Targeting: markets.cal.targeting = config, so this uses THIS repo's config.yaml — Advantage+
+# broad across CA/WA/OR/NV. It does not clone an interest stack the way SG does.
+#
+# ⚠️ AFTER building, before activating: set the Chinese-dense CITIES in Ads Manager (Arcadia,
+# San Marino, San Gabriel, Monterey Park, Cupertino, Fremont, Irvine). The Targeting model only
+# emits state-level regions, and state-level reach is where CAL's CPL goes bad.
+#
+# ⚠️ NOT idempotent across dispatches: state/ is not committed, so a second run would build a
+# SECOND copy of every campaign. Treat it as one-shot.
+
+on:
+  workflow_dispatch:
+    inputs:
+      groups:
+        description: "Comma-separated group keys (blank = all): a_knowledge,b_myths,c_proof,d_emotion,e_lowkey,f_backup"
+        required: false
+        default: ""
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Fetch the shared creative library (public repo, no credential)
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse \
+            https://github.com/marketthinkmy-code/martin-ads-SG.git _creatives
+          cd _creatives && git sparse-checkout set assets/sg_batch
+          echo "fetched $(find assets/sg_batch -type f | wc -l) asset files"
+      - name: Build the CAL batch (PAUSED)
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          ADBOT_MARKET: cal
+          ADBOT_ASSETS_ROOT: ${{ github.workspace }}/_creatives/assets/sg_batch
+          ADBOT_BATCH_GROUPS: ${{ github.event.inputs.groups }}
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+        run: python scripts/build_batch.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-batch-state
+          path: state/
+          if-no-files-found: warn
