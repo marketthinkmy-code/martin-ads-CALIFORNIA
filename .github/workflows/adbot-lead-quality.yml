@@ -1,0 +1,28 @@
+name: adbot · lead quality vs spend (misallocation audit)
+
+# Manual, read-only: per ad over LIFETIME, joins Meta spend + registrations (leads) with real
+# paid sales (buyers) from the Paid Student List, and computes lead->sale % (lead quality),
+# cost/sale, and cost/lead — then surfaces underfunded winners and overfunded low-quality ads.
+# No writes.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: lead-quality-vs-spend report
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+        run: python scripts/lead_quality_vs_spend.py
