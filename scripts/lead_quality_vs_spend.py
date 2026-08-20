@@ -99,21 +99,25 @@ def main() -> None:
         print("⚠️  No sales carry an ad name — cannot measure lead quality. Stopping.")
         return
 
-    # ── 3. per-ad join by normalized ad name ─────────────────────────────────
-    rows = []  # (norm, camp, spend, reg, sales, lead_sale, cost_sale, cpl, live)
-    seen = set()
+    # ── 3. AGGREGATE BY CREATIVE NAME (not ad_id) ────────────────────────────
+    # One creative ("华人孩子") runs as many ad_ids across adsets; sum their spend + leads and
+    # attach the name's sales ONCE. Aggregating by ad_id would fan the sales out onto every
+    # instance and massively over-count. Name is also the operator's unit of thought.
+    spend_by_norm, reg_by_norm, camp_by_norm = defaultdict(float), defaultdict(float), {}
     for aid, spend in spend_by_ad.items():
         norm = cpa.norm(name_by_ad[aid])
-        seen.add(norm)
+        spend_by_norm[norm] += spend
+        reg_by_norm[norm] += reg_by_ad.get(aid, 0)
+        camp_by_norm.setdefault(norm, camp_by_ad.get(aid, ""))
+
+    rows = []  # (norm, camp, spend, reg, sales, lead_sale, cost_sale, cpl, live)
+    for norm in set(spend_by_norm) | set(sales_by_norm):
+        spend = spend_by_norm.get(norm, 0.0)
+        reg = reg_by_norm.get(norm, 0)
         sold = sales_by_norm.get(norm, 0)
-        reg = reg_by_ad.get(aid, 0)
-        rows.append((norm, camp_by_ad.get(aid, ""), spend, reg, sold,
+        rows.append((norm, camp_by_norm.get(norm, "?"), spend, reg, sold,
                      _ratio(sold, reg), (spend / sold) if sold else (math.inf if spend else None),
                      _ratio(spend, reg), norm in active_adnorms))
-    # sales attributed to ad names Meta lifetime insights didn't return (very old / renamed)
-    for norm, sold in sales_by_norm.items():
-        if norm not in seen:
-            rows.append((norm, "?", 0.0, 0, sold, None, 0.0, None, norm in active_adnorms))
 
     total_spend = sum(r[2] for r in rows)
     total_sales = sum(r[4] for r in rows)
