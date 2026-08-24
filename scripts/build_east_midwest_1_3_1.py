@@ -19,12 +19,12 @@ from adbot.commands import drive_client, graph_client
 from adbot.logging import final_summary, get_logger
 from adbot.settings import load_settings
 
-US_ACCT = "act_1629566827721449"
+US_ACCT = "act_921653460987535"   # 【美東美中】MTC X Martin New 6 (MYR)
 PAGE_ID = "1180683238455992"
-PIXEL_ID = "1921735088376759"
+PIXEL_ID = "2035639583602118"     # 美東美中 US Martin Pixel (this account's own)
 LINK = "https://kidsgrowthformula.com/webinar-main-page"
 UTM = "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
-STATE_KEY = "entities_east_midwest_1_3_1"
+STATE_KEY = "entities_east_midwest_1_3_1_acct6"
 DAILY_CENTS = 5000            # RM50.00/day per AD SET (ABO)
 STATUS = "ACTIVE"
 
@@ -38,7 +38,9 @@ EAST = ["New York", "New Jersey", "Massachusetts", "Pennsylvania",
         "Connecticut", "Maryland", "Virginia"]
 MIDWEST = ["Illinois", "Michigan", "Ohio", "Minnesota"]
 
-EXCLUDE = [{"id": "120236056842490259"}, {"id": "120240867576290259"}, {"id": "120243775674560259"}]
+# This account has no custom audiences yet, and audience IDs are account-scoped — so there is
+# nothing valid to exclude here. Left empty deliberately rather than copying the CA account's IDs.
+EXCLUDE = []
 
 CAPTION = """⚠️ 每年都帶孩子做 check-up，醫生每次都說：「他的身高還在正常範圍內。」
 
@@ -123,8 +125,9 @@ def main() -> None:
     log.info("resolving 美東 + 美中 region keys ...")
     regions = resolve_regions(g, log, EAST + MIDWEST)
     geo = {"regions": regions, "location_types": ["home", "recent"]}
-    base = {"age_min": 25, "age_max": 65, "geo_locations": geo, "locales": [20, 21, 22],
-            "excluded_custom_audiences": EXCLUDE}
+    base = {"age_min": 25, "age_max": 65, "geo_locations": geo, "locales": [20, 21, 22]}
+    if EXCLUDE:
+        base["excluded_custom_audiences"] = EXCLUDE
 
     audiences = [
         {"key": "broad", "name": "Broad · East+Midwest · Advantage+",
