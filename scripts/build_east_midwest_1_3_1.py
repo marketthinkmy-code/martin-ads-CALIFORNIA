@@ -173,7 +173,10 @@ def main() -> None:
     if not campaign_id:
         campaign_id = g.create_campaign(
             US_ACCT, name=CAMPAIGN_NAME, objective="OUTCOME_SALES", buying_type="AUCTION",
-            status=STATUS, special_ad_categories=[])["id"]
+            status=STATUS, special_ad_categories=[],
+            # ABO: Meta requires this explicitly when there is no campaign budget. False keeps
+            # each ad set's RM50 strictly its own, so the audience test stays clean.
+            is_adset_budget_sharing_enabled=False)["id"]
         persist()
         log.info("created campaign %s (ABO)", campaign_id)
 
