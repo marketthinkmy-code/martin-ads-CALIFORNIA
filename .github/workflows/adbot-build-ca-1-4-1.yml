@@ -1,0 +1,30 @@
+name: adbot · build CA 1-4-1 ABO (Family & Relationships x 4 北美 videos)
+
+# 1 campaign · 4 ad sets (ABO RM50/day each, all targeting interest: Family & Relationships)
+# · 1 video ad each — SV1 / V1 / V2 / V5. Creative is the only variable. One-shot, idempotent.
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: adbot-build-ca-1-4-1
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Build CA 1-4-1
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/build_ca_1_4_1_fr.py
