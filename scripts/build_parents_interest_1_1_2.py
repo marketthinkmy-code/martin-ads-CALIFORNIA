@@ -22,7 +22,7 @@ from adbot.settings import load_settings
 US_ACCT = "act_1629566827721449"
 PAGE_ID = "1180683238455992"
 PIXEL_ID = "1921735088376759"
-LINK = "https://kidsgrowthformula.com/webinar-main-page"
+LINK = "https://kidsgrowthformula.com/us-register"
 UTM = "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
 STATE_KEY = "entities_parents_interest_1_1_2"
 DAILY_CENTS = 10000  # RM100.00/day CBO

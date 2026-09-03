@@ -22,7 +22,7 @@ from adbot.settings import load_settings
 US_ACCT = "act_921653460987535"   # 【美東美中】MTC X Martin New 6 (MYR)
 PAGE_ID = "1180683238455992"
 PIXEL_ID = "2035639583602118"     # 美東美中 US Martin Pixel (this account's own)
-LINK = "https://kidsgrowthformula.com/webinar-main-page"
+LINK = "https://kidsgrowthformula.com/us-register"
 UTM = "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
 STATE_KEY = "entities_east_midwest_1_3_1_acct6"
 DAILY_CENTS = 5000            # RM50.00/day per AD SET (ABO)

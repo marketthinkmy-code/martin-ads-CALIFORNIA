@@ -16,7 +16,7 @@ from adbot.settings import load_settings
 
 US_ACCT = "act_1629566827721449"
 PAGE_ID = "1180683238455992"
-LINK = "https://kidsgrowthformula.com/webinar-main-page"
+LINK = "https://kidsgrowthformula.com/us-register"
 UTM = "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
 STATE_KEY = "entities_given_videos"
 

@@ -22,7 +22,7 @@ meta:
 
   lead_destination:
     type: "WEBSITE"                      # WEBSITE | INSTANT_FORM | MESSENGER | WHATSAPP
-    link_url: "https://kidsgrowthformula.com/webinar-main-page"
+    link_url: "https://kidsgrowthformula.com/us-register"
   conversion_domain: "https://kidsgrowthformula.com/"   # bare domain derived = kidsgrowthformula.com (verify it in Meta Business settings)
   call_to_action: "LEARN_MORE"           # confirmed same as template
   url_tags: "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"

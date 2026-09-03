@@ -24,7 +24,7 @@ from adbot.settings import load_settings
 US_ACCT = "act_1629566827721449"
 PAGE_ID = "1180683238455992"
 ADSET_ID = "120247164684970259"
-LINK = "https://kidsgrowthformula.com/webinar-main-page"
+LINK = "https://kidsgrowthformula.com/us-register"
 STATE_KEY = "entities_sg_thumb_ads"
 
 # (ad name, SG video_id, 繁体 caption) — milk/bread already excluded upstream

@@ -20,7 +20,7 @@ meta:
 
   lead_destination:
     type: "WEBSITE"
-    link_url: "https://kidsgrowthformula.com/webinar-main-page"
+    link_url: "https://kidsgrowthformula.com/us-register"
   conversion_domain: "https://kidsgrowthformula.com/"
   call_to_action: "LEARN_MORE"
   url_tags: "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"

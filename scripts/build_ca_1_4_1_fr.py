@@ -20,7 +20,7 @@ from adbot.settings import load_settings
 US_ACCT = "act_1629566827721449"   # 【加州】MTC X Martin New 5
 PAGE_ID = "1180683238455992"
 PIXEL_ID = "1921735088376759"
-LINK = "https://kidsgrowthformula.com/webinar-main-page"
+LINK = "https://kidsgrowthformula.com/us-register"
 UTM = "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
 STATE_KEY = "entities_ca_1_4_1_fr"
 DAILY_CENTS = 5000                 # RM50.00/day per AD SET (ABO)

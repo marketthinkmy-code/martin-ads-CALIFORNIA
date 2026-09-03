@@ -14,7 +14,7 @@ from adbot.settings import load_settings
 
 US_ACCT = "act_921653460987535"   # 【美東美中】MTC X Martin New 6
 PAGE_ID = "1180683238455992"
-LINK = "https://kidsgrowthformula.com/webinar-main-page"
+LINK = "https://kidsgrowthformula.com/us-register"
 UTM = "utm_source={{adset.name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
 STATE_KEY = "entities_east_midwest_video5"
 STATUS = "ACTIVE"

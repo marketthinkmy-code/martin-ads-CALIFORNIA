@@ -49,7 +49,7 @@ markets:
   cal:
     script: hant
     naming_prefix: '[CAL] 兒童長高方程式'
-    link: https://kidsgrowthformula.com/webinar-main-page
+    link: https://kidsgrowthformula.com/us-register
     geo:
       regions:
       - key: '3847'
