@@ -1,0 +1,31 @@
+name: adbot · build East+Midwest 4 hooks x 3 audiences
+
+# 3 campaigns (Parents 3-17+Engaged / Family and Relationships / Food & Drink + Milk + Bread),
+# each with ONE AD SET PER VIDEO at RM50/day (Hook 1 / Hook 2 / Hook 6 / Video 7).
+# 12 ad sets total, RM600/day. Age 35-65. Built PAUSED for review.
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: adbot-build-em-4hooks
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Build 4 hooks x 3 audiences
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/build_em_4hooks_3aud.py
