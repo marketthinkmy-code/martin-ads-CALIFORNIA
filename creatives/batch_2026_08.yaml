@@ -12,8 +12,9 @@
 #   · script hant, converted with OpenCC s2twp (Taiwan phrasing: 影片 not 视频, 麵包 not 面包)
 #   · Southeast-Asian references replaced — 煲花生根 is a Malaysian/Singaporean remedy, so CAL
 #     says 燉轉骨湯, which is the Taiwanese equivalent a Taiwanese-American parent recognises
-#   · the 醫師 title is dropped: the official landing page says 國家考試高考合格藥師, and
-#     California regulates physician/doctor titles. Flip `markets.cal.blocks.bio` if you disagree.
+#   · SUPERSEDED 2026-09: the operator confirmed Dr. Martin now holds the 醫師 licence, so all
+#     copy uses 馬丁醫師 / 台灣執照醫師. The earlier note here dropped the title based on the old
+#     landing page wording — that reasoning no longer applies.
 #   · link and geo are TODO — only you know CAL's landing page and which counties/cities to run.
 #
 # Regenerate SG copy from here; it round-trips byte-identically to what is live today.

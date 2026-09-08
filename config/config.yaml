@@ -1,6 +1,6 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # adbot — non-secret operator config for martin-ads-california
-# Brand: Martin California ·《兒童長高方程式》· 馬丁藥師 (kids-growth conditioning course)
+# Brand: Martin California ·《兒童長高方程式》· 馬丁醫師 (kids-growth conditioning course)
 # Market: California / North-American Chinese parents. Ad copy language: 繁體中文.
 # Secrets live in .env (see .env.example).  `python -m adbot doctor` validates this file.
 #
@@ -68,7 +68,7 @@ naming:
   weekly_off_label: "ADBOT_WEEKLY_OFF"   # structural — do not change
 
 drive:
-  # California creatives folder (馬丁藥師 Drive -> Ads Content -> 2026 -> California).
+  # California creatives folder (馬丁醫師 Drive -> Ads Content -> 2026 -> California).
   # Drop this batch's videos / single images / a "carousel" subfolder here. Must be readable
   # by the build service account.
   creatives_folder_id: "1lFIYt6Df9jdPu12lRn0R00ZKPMdnoT4z"
