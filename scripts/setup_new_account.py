@@ -47,7 +47,7 @@ def main() -> None:
             log.info("1. ✅ shared pixel %s -> %s", PIXEL_ID, NEW_ACCT)
         ok.append("pixel shared")
     except Exception as e:  # noqa: BLE001
-        log.info("1. ❌ pixel share failed: %s", e)
+        log.info("1. ❌ pixel share failed (needs a business ADMIN of MTC X Martin to share it in the UI): %s", e)
         fails.append(f"pixel share: {e}")
 
     # verify from the NEW side
@@ -92,8 +92,10 @@ def main() -> None:
             log.info("3. audience already exists: %s", hit["id"])
         else:
             # the rule must reference the pixel by id; it is the same pixel so no rewrite needed
+            # no `subtype`: the API rejects it for rule-based audiences and infers WEBSITE
+            # from the pixel rule itself
             created = new._request("POST", f"{NEW_ACCT}/customaudiences", data={
-                "name": new_aud_name, "subtype": "WEBSITE", "rule": rule,
+                "name": new_aud_name, "rule": rule,
                 "retention_days": retention, "prefill": "true",
                 "description": f"cloned from {ref_name or 'reference'} for the new account"})
             log.info("3. ✅ created exclusion audience %s", created.get("id"))
