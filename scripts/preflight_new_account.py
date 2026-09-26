@@ -14,8 +14,11 @@ build and prints PASS/FAIL per item instead of inferring from one call:
 """
 from __future__ import annotations
 
+import os
+
 from adbot.commands import graph_client
 from adbot.logging import final_summary, get_logger
+from adbot.newbm import new_bm_client
 from adbot.settings import load_settings
 
 ACCT = "act_2022836788419850"
@@ -36,7 +39,14 @@ def check(log, label, fn):
 
 def main() -> None:
     log = get_logger()
-    g = graph_client(load_settings())
+    # Prefer the new business's own token when it exists; fall back to the repo token so
+    # this preflight still reports the real blocker instead of refusing to run.
+    if os.environ.get("META_NEW_BM_TOKEN", "").strip():
+        g = new_bm_client()
+        log.info("using META_NEW_BM_TOKEN")
+    else:
+        g = graph_client(load_settings())
+        log.info("using META_SYSTEM_USER_TOKEN (META_NEW_BM_TOKEN not set)")
 
     me = g._request("GET", "me", params={"fields": "id,name"})
     log.info("token = system user %s (%s)", me.get("id"), me.get("name"))
