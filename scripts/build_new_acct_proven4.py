@@ -10,10 +10,13 @@ one video per ad set, US$12/day per ad set (≈RM50), built PAUSED.
     ad set · 15歲以上還有機會長高嗎   $12
     ad set · 林書豪story              $12
 
-Videos are account-scoped, so each is pulled from the East+Midwest account (old token,
-`source` URL) and re-uploaded here (new token). Copy is the approved 醫師 / 10,000 位孩子
-rewrite. Ad NAMES are kept identical to the original winners so UTM attribution in the paid
-sheet stays continuous. Region keys resolved live. Idempotent by name within the account.
+Identity = Page 馬丁藥師｜兒童身高管理專家 + IG martinyaoshi.us (resolved from the Page).
+
+Creatives use the EXISTING Page posts of the four winners (object_story_id) so likes and
+comments keep accumulating on one post across accounts — the operator's call. Only if a
+post id cannot be used does a slot fall back to re-uploading the video with the 醫師 /
+10,000 位孩子 copy. Ad NAMES are kept identical to the original winners so UTM attribution
+in the paid sheet stays continuous. Region keys resolved live. Idempotent by name.
 """
 from __future__ import annotations
 
@@ -168,13 +171,17 @@ CAP_LIN = """👨‍🏫 你家孩子 5–17 歲，一年長不到 5cm？
 
 # source video ids live in the East+Midwest account; ad names are the UTM attribution keys
 VIDEOS = [
-    {"key": "V1",   "src_video": "2013939992693198", "ad_name": "Video 1: 华人孩子在美国很难长高",
+    {"key": "V1",   "src_video": "2013939992693198", "post_id": "1180683238455992_122134716117351616",
+     "ad_name": "Video 1: 华人孩子在美国很难长高",
      "short": "Video 1 华人孩子", "headline": "🔴 想讓孩子健康長高？我可以幫助你！", "caption": CAP_V1},
-    {"key": "V1517", "src_video": "2635916286878637", "ad_name": "Video: 15-16-17歲孩子",
+    {"key": "V1517", "src_video": "2635916286878637", "post_id": "1180683238455992_122134932705351616",
+     "ad_name": "Video: 15-16-17歲孩子",
      "short": "15-16-17歲孩子", "headline": "🔴 孩子 15、16、17 歲還沒抽高？補救期就剩現在", "caption": CAP_1517},
-    {"key": "V15UP", "src_video": "1927105534653150", "ad_name": "Video: 孩子15歲以上還有機會長高嗎?",
+    {"key": "V15UP", "src_video": "1927105534653150", "post_id": "1180683238455992_122134715961351616",
+     "ad_name": "Video: 孩子15歲以上還有機會長高嗎?",
      "short": "15歲以上還有機會長高嗎", "headline": "🔴 想讓孩子健康長高？我可以幫助你！", "caption": CAP_15UP},
-    {"key": "LIN",  "src_video": "1478933497330796", "ad_name": "MAR Video 5: 林書豪story",
+    {"key": "LIN",  "src_video": "1478933497330796", "post_id": "1180683238455992_122134932717351616",
+     "ad_name": "MAR Video 5: 林書豪story",
      "short": "林書豪story", "headline": "🔴 想讓孩子健康長高？我可以幫助你！", "caption": CAP_LIN},
 ]
 
@@ -235,16 +242,40 @@ def main() -> None:
              {"id": 6004100985609}]}]}},
     ]
 
-    # 1) move each video across once; one creative each, reused by both campaigns
-    have_videos = existing_by_name(new, "advideos", "title")
+    # identity: Page + the IG account linked to it (ad-account IG listing is empty, the
+    # link lives on the Page)
+    ig_id = None
+    try:
+        pg = new.get_object(PAGE_ID, "instagram_business_account,connected_instagram_account")
+        ig = pg.get("instagram_business_account") or pg.get("connected_instagram_account") or {}
+        ig_id = ig.get("id")
+    except Exception as e:  # noqa: BLE001
+        log.info("could not read IG from Page: %s", e)
+    log.info("identity: page %s · instagram_user_id %s", PAGE_ID, ig_id or "(none — page-backed)")
+
+    # 1) one creative per winner. Existing post first (engagement carries over); fall back to
+    #    re-uploading the video with the new copy only if the post cannot be used.
     have_creatives = existing_by_name(new, "adcreatives")
+    have_videos = existing_by_name(new, "advideos", "title")
     dl = Path("/tmp/new_acct_proven4"); dl.mkdir(parents=True, exist_ok=True)
-    creatives = {}
+    creatives, modes = {}, {}
     for v in VIDEOS:
         k, title = v["key"], v["ad_name"]
+        if title in have_creatives:
+            creatives[k] = have_creatives[title]; modes[k] = "existing"
+            log.info("[%s] creative already exists: %s", k, creatives[k])
+            continue
+        fields = {"name": title, "object_story_id": v["post_id"], "url_tags": UTM}
+        if ig_id:
+            fields["instagram_user_id"] = ig_id
+        try:
+            creatives[k] = new.create_adcreative(NEW_ACCT, **fields)["id"]; modes[k] = "post"
+            log.info("[%s] created creative from existing post %s -> %s", k, v["post_id"], creatives[k])
+            continue
+        except Exception as e:  # noqa: BLE001
+            log.info("[%s] existing post unusable (%s) — falling back to new video creative", k, e)
         if title in have_videos:
             vid = have_videos[title]
-            log.info("[%s] video already in account: %s", k, vid)
         else:
             src = old.get_object(v["src_video"], "source")["source"]
             path = dl / f"{k}.mp4"
@@ -256,20 +287,17 @@ def main() -> None:
             log.info("[%s] downloaded %d bytes from East+Midwest", k, path.stat().st_size)
             vid = new.upload_video(NEW_ACCT, str(path), title)
             log.info("[%s] uploaded -> %s", k, vid)
-        if title in have_creatives:
-            creatives[k] = have_creatives[title]
-            log.info("[%s] creative already exists: %s", k, creatives[k])
-            continue
         video_data = {"video_id": vid, "title": v["headline"], "message": v["caption"],
                       "call_to_action": {"type": "LEARN_MORE", "value": {"link": LINK}}}
         thumb = new.get_video_thumbnail(vid)
         if thumb:
             video_data["image_url"] = thumb
-        creatives[k] = new.create_adcreative(
-            NEW_ACCT, name=title,
-            object_story_spec={"page_id": PAGE_ID, "video_data": video_data},
-            url_tags=UTM)["id"]
-        log.info("[%s] created creative %s", k, creatives[k])
+        spec = {"page_id": PAGE_ID, "video_data": video_data}
+        if ig_id:
+            spec["instagram_user_id"] = ig_id
+        creatives[k] = new.create_adcreative(NEW_ACCT, name=title, object_story_spec=spec,
+                                             url_tags=UTM)["id"]; modes[k] = "new"
+        log.info("[%s] created NEW video creative %s", k, creatives[k])
 
     # 2) one campaign per audience; one ad set per video; ad set named after targeting
     have_campaigns = existing_by_name(new, "campaigns")
@@ -314,7 +342,8 @@ def main() -> None:
     for line in summary:
         log.info(line)
     final_summary(log, f"NEW account Proven-4 built ({STATUS}, US$12/day × 8 ad sets = US$96/day): "
-                       f"{n_adsets} new ad sets, {n_ads} new ads.")
+                       f"{n_adsets} new ad sets, {n_ads} new ads · creative modes {modes} · "
+                       f"IG {ig_id or 'page-backed'}")
 
 
 if __name__ == "__main__":
