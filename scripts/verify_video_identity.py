@@ -17,9 +17,12 @@ from adbot.clients.drive import DriveClient
 from adbot.commands import graph_client
 from adbot.settings import load_settings
 
+# every Meta video id seen behind each winner ad; the first one whose `source` is readable is used
 PAIRS = [
-    ("V1 华人孩子在美国", "4065966730323187", "1LpfDhu-5Xn6_F9vM-5cc9x5CdT1I9T9d"),
-    ("V3 175以上",       "1439172857608022", "1xTxHqOPqHaZKdgs1kAn5Nsi2R_iVvK1f"),
+    ("V1 华人孩子在美国", ["4065966730323187", "1908705869717276", "1949496062433268",
+                        "4178562869108616"], "1LpfDhu-5Xn6_F9vM-5cc9x5CdT1I9T9d"),
+    ("V3 175以上",       ["1439172857608022", "1297858878774827", "28725175003738688"],
+     "1xTxHqOPqHaZKdgs1kAn5Nsi2R_iVvK1f"),
 ]
 STAMPS = [2, 10, 25, 45, 65, 85]
 WORK = Path("/tmp/verify"); WORK.mkdir(exist_ok=True)
@@ -36,9 +39,21 @@ def main() -> None:
     s = load_settings()
     g = graph_client(s)
     drive = DriveClient(s.secrets.google_sa_json)
-    for label, vid, fid in PAIRS:
+    for label, vids, fid in PAIRS:
+        vid, src = None, None
+        for v in vids:
+            try:
+                src = g.get_object(v, "source").get("source")
+            except Exception as e:  # noqa: BLE001
+                print(f"  {v}: {str(e)[:80]}")
+            if src:
+                vid = v
+                break
+            print(f"  {v}: no downloadable source")
+        if not src:
+            print(f"=== {label}: no Meta video downloadable — cannot frame-compare ===\n")
+            continue
         print(f"=== {label}: Meta video {vid}  vs  Drive {fid} ===")
-        src = g.get_object(vid, "source")["source"]
         mp = WORK / f"{vid}.mp4"
         with requests.get(src, stream=True, timeout=300) as r:
             r.raise_for_status()
