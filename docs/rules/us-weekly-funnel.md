@@ -35,6 +35,10 @@ Test all three: Parents 3-17 + Engaged, Family and Relationships, Broad (Advanta
   Thursday morning (2026-11-04 decision).
 - 加州 account time zone is Asia/Kuala_Lumpur; 美東美中 is America/New_York.
 
+## Identity
+- Facebook Page `1180683238455992` + Instagram **martinyaoshi.us `17841415309062626`** (the id
+  `36101311622850677` in older notes is invalid). Creatives must carry the IG identity.
+
 ## Build rules
 - **ABO, RM50/day per ad set**, one video per ad set, `is_adset_budget_sharing_enabled=False`.
 - Objective OUTCOME_SALES, optimise CompleteRegistration on that side's pixel.
