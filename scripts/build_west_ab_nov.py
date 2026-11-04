@@ -16,6 +16,7 @@ name, so a failed run can simply be re-run.
 from __future__ import annotations
 
 import json
+import time
 from pathlib import Path
 
 from adbot.commands import drive_client, graph_client
@@ -155,11 +156,20 @@ def main() -> None:
          "exclude_geo": None},
     ]
 
+    ig_id = None
+    try:
+        pg = g.get_object(PAGE_ID, "instagram_business_account,connected_instagram_account")
+        ig_id = ((pg.get("instagram_business_account") or pg.get("connected_instagram_account"))
+                 or {}).get("id")
+    except Exception as e:  # noqa: BLE001
+        print(f"  page IG lookup failed: {str(e)[:90]}")
+    print(f"  IG from page: {ig_id or 'none — page-backed'}")
+
     print("== videos / creatives ==")
     have_vid = existing(g, "advideos", "title")
     have_cr = existing(g, "adcreatives")
     dl = Path("/tmp/west_ab"); dl.mkdir(exist_ok=True)
-    creative, ig_ok = {}, True
+    creative, ig_ok = {}, bool(ig_id)
     for v in VIDEOS:
         if v["ad_name"] in have_cr:
             creative[v["key"]] = have_cr[v["ad_name"]]
@@ -179,7 +189,7 @@ def main() -> None:
             vd["image_url"] = thumb
         spec = {"page_id": PAGE_ID, "video_data": vd}
         if ig_ok:
-            spec["instagram_user_id"] = IG_USER_ID
+            spec["instagram_user_id"] = ig_id
         try:
             creative[v["key"]] = g.create_adcreative(ACCT, name=v["ad_name"],
                                                      object_story_spec=spec, url_tags=UTM)["id"]
@@ -204,6 +214,7 @@ def main() -> None:
                 status=STATUS, special_ad_categories=[],
                 is_adset_budget_sharing_enabled=False)["id"]
             print(f"  campaign {cid}  {cname}")
+            time.sleep(3)
             have_as = {r["name"]: r["id"] for r in g._get_all(f"{cid}/adsets", {"fields": "id,name"})}
             for v in VIDEOS:
                 tgt = {"age_min": 35, "age_max": 65, "geo_locations": lvl["geo"],
@@ -214,18 +225,22 @@ def main() -> None:
                 if aud["flex"]:
                     tgt["flexible_spec"] = aud["flex"]
                 asname = f"{aud['name']} | {lvl['adset_tag']} | {v['key']}"
+                existed = asname in have_as
                 asid = have_as.get(asname) or g.create_adset(
                     ACCT, campaign_id=cid, name=asname, daily_budget=DAILY,
                     bid_strategy="LOWEST_COST_WITHOUT_CAP",
                     optimization_goal="OFFSITE_CONVERSIONS", billing_event="IMPRESSIONS",
                     promoted_object={"pixel_id": PIXEL_ID, "custom_event_type": "COMPLETE_REGISTRATION"},
                     targeting=tgt, status=STATUS)["id"]
-                have_ads = {r["name"] for r in g._get_all(f"{asid}/ads", {"fields": "name"})}
+                time.sleep(3)
+                have_ads = ({r["name"] for r in g._get_all(f"{asid}/ads", {"fields": "name"})}
+                            if existed else set())
                 if v["ad_name"] not in have_ads:
                     adid = g.create_ad(ACCT, name=v["ad_name"], adset_id=asid,
                                        creative={"creative_id": creative[v["key"]]},
                                        status=STATUS)["id"]
                     n_ads += 1
+                    time.sleep(3)
                     print(f"    adset {asid} {asname} -> ad {adid}")
                 else:
                     print(f"    adset {asid} {asname} (ad exists)")
