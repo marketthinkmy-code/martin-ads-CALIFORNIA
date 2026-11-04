@@ -119,6 +119,12 @@ def search_geo(g, q, kind):
     return res.get("data", [])
 
 
+# Resolved live on 2026-11-04 (runs 1–2) and logged; hard-coded to save calls under throttling.
+RESOLVED_STATES = [{"key": "3847"}, {"key": "3890"}]                    # California, Washington
+RESOLVED_CITIES = [{"key": k} for k in ["2418745", "2419338", "2417747", "2419905", "2422746",
+                                         "2421924", "2420670", "2540815", "2542384"]]
+
+
 def resolve(g):
     states = []
     for name in STATES:
@@ -143,12 +149,33 @@ def existing(g, edge, field="name"):
                                                        {"fields": f"id,{field}", "limit": 200})}
 
 
+def throttle_tolerant(g):
+    """Wrap g._request so a Meta rate-limit error waits it out instead of killing the build."""
+    from adbot.clients import graph as graph_mod
+    raw = g._request
+
+    def wrapped(*a, **kw):
+        for attempt in range(8):
+            try:
+                return raw(*a, **kw)
+            except graph_mod._Retryable as e:  # raised after tenacity's own short retries
+                if "throttle" not in str(e).lower() and "limit" not in str(e).lower():
+                    raise
+                print(f"  rate-limited ({str(e)[:70]}) — sleeping 5 min [{attempt + 1}/8]", flush=True)
+                time.sleep(300)
+        return raw(*a, **kw)
+
+    g._request = wrapped
+    return g
+
+
 def main() -> None:
     s = load_settings()
-    g = graph_client(s)
+    g = throttle_tolerant(graph_client(s))
 
     print("== geo ==")
-    states, cities = resolve(g)
+    states, cities = RESOLVED_STATES, RESOLVED_CITIES
+    print("  using keys resolved on 2026-11-04: CA 3847, WA 3890 + 9 cities")
     geo_levels = [
         {"key": "STATE", "label": "州级", "adset_tag": "州级 CA+WA",
          "geo": {"regions": states, "location_types": ["home", "recent"]},
@@ -157,14 +184,6 @@ def main() -> None:
          "geo": {"cities": cities, "location_types": ["home", "recent"]},
          "exclude_geo": None},
     ]
-
-    for cid_old in STALE_CREATIVES:
-        try:
-            g._request("DELETE", cid_old)
-            print(f"  deleted stale page-backed creative {cid_old}")
-        except Exception as e:  # noqa: BLE001
-            print(f"  stale creative {cid_old}: {str(e)[:80]}")
-        time.sleep(2)
 
     print("== videos / creatives ==")
     have_vid = existing(g, "advideos", "title")
