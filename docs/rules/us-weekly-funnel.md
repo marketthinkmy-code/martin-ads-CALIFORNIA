@@ -50,9 +50,9 @@ Test all three: Parents 3-17 + Engaged, Family and Relationships, Broad (Advanta
 - Name: **馬丁醫師**. Script: **繁體**. Punctuation: full-width （，。！？：）.
 - Paragraph blocks, lines stacked inside a block, blank line only between blocks. No markdown.
 - One best version only; show copy for approval before building.
-- Compliance line the operator keeps (2026-11-04): **never promise a specific height gain**
-  (no "每年長高 6–8cm"-style guarantees, no adult-height prediction). The operator explicitly
-  allowed ethnic/peer height comparison and the 醫師 / health framing.
+- Compliance: the operator reviewed the funnel doc's lines and chose to keep the original
+  claims, including 「每年實現健康增高6cm-8cm」, ethnic/peer height comparison and the 醫師
+  framing (2026-11-04). Brand number is 10,000+ 名孩子.
 
 ## Sales data
 - Paid students: sheet tab `🇺🇸 Paid Student List ($799)`, matched by UTM ad name. Operator
