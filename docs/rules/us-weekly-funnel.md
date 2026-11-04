@@ -36,8 +36,12 @@ Test all three: Parents 3-17 + Engaged, Family and Relationships, Broad (Advanta
 - 加州 account time zone is Asia/Kuala_Lumpur; 美東美中 is America/New_York.
 
 ## Identity
-- Facebook Page `1180683238455992` + Instagram **martinyaoshi.us `17841415309062626`** (the id
-  `36101311622850677` in older notes is invalid). Creatives must carry the IG identity.
+- Every ad: Facebook Page **馬丁藥師｜兒童身高管理專家 `1180683238455992`** + Instagram
+  **martinyaoshi.us**. API id `17841415309062626`; Ads Manager shows the same account as
+  `36101311622850677` (the API rejects that format). Threads = use Instagram account.
+  WhatsApp +60 11-2548 7541 comes from the Page link — verify on one ad after each build.
+- **Always create new posts** (new creatives via object_story_spec). Do NOT reuse existing
+  post IDs — this supersedes the existing-post approach in the East+Midwest handoff.
 
 ## Build rules
 - **ABO, RM50/day per ad set**, one video per ad set, `is_adset_budget_sharing_enabled=False`.
