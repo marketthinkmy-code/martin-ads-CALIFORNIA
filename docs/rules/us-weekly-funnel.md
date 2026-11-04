@@ -30,13 +30,10 @@ Toronto goes in the normal ad sets — no separate ad set.
 ## Audiences
 Test all three: Parents 3-17 + Engaged, Family and Relationships, Broad (Advantage+).
 
-## Timing (US time, not account time)
-- 加州 account time zone is **Asia/Kuala_Lumpur**; 美東美中 is America/New_York. Neither can be changed.
-- Every ad set gets explicit `start_time` / `end_time` written with a US offset
-  (West `-08:00` PST, East `-05:00` EST), so delivery starts/stops at the US moment
-  regardless of account time zone.
-- Ads end at the live start (Wed 8:00 PM local). The next side's ad sets start at the same moment.
-- Daily budgets still reset at the account's midnight (加州: 00:00 MYT = 08:00 PST).
+## Timing
+- No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
+  Thursday morning (2026-11-04 decision).
+- 加州 account time zone is Asia/Kuala_Lumpur; 美東美中 is America/New_York.
 
 ## Build rules
 - **ABO, RM50/day per ad set**, one video per ad set, `is_adset_budget_sharing_enabled=False`.
