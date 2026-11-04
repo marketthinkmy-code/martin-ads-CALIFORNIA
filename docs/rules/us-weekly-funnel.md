@@ -30,6 +30,13 @@ Toronto goes in the normal ad sets — no separate ad set.
 ## Audiences
 Test all three: Parents 3-17 + Engaged, Family and Relationships, Broad (Advantage+).
 
+Advantage+ audience (US West build, 2026-11-04, operator's choice — keep as is):
+- 城市级 ad sets: Advantage+ audience ON (Meta flagged the audience as too small);
+  age_min 25 with 35–65 as a suggestion. Location stays a hard limit, so the 9 cities
+  are still the only geo and the 州级 city exclusion still holds.
+- 州级 ad sets: Advantage+ audience OFF, age 35–65 fixed.
+- Caveat when reading results: 州级 vs 城市级 now differ in geo AND Advantage+.
+
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
   Thursday morning (2026-11-04 decision).
