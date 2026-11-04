@@ -24,7 +24,9 @@ from adbot.settings import load_settings
 
 ACCT = "act_1629566827721449"          # 【加州】MTC X Martin New 5 (MYR, account tz Asia/KL)
 PAGE_ID = "1180683238455992"           # 馬丁藥師｜兒童身高管理專家
-IG_USER_ID = "36101311622850677"       # martinyaoshi.us — dropped automatically if Meta rejects it
+IG_USER_ID = "17841415309062626"       # martinyaoshi.us (listed on this account, linked to PAGE_ID)
+# first run built these page-backed (wrong IG id); never attached to an ad — replace them
+STALE_CREATIVES = ["1441066007488388", "2346262602445610", "2512808332542346"]
 PIXEL_ID = "1921735088376759"
 LINK = "https://kidsgrowthformula.com/register"
 UTM = ("utm_source={{adset.name}}&utm_medium={{placement}}"
@@ -156,20 +158,20 @@ def main() -> None:
          "exclude_geo": None},
     ]
 
-    ig_id = None
-    try:
-        pg = g.get_object(PAGE_ID, "instagram_business_account,connected_instagram_account")
-        ig_id = ((pg.get("instagram_business_account") or pg.get("connected_instagram_account"))
-                 or {}).get("id")
-    except Exception as e:  # noqa: BLE001
-        print(f"  page IG lookup failed: {str(e)[:90]}")
-    print(f"  IG from page: {ig_id or 'none — page-backed'}")
+    for cid_old in STALE_CREATIVES:
+        try:
+            g._request("DELETE", cid_old)
+            print(f"  deleted stale page-backed creative {cid_old}")
+        except Exception as e:  # noqa: BLE001
+            print(f"  stale creative {cid_old}: {str(e)[:80]}")
+        time.sleep(2)
 
     print("== videos / creatives ==")
     have_vid = existing(g, "advideos", "title")
-    have_cr = existing(g, "adcreatives")
+    # never reuse a stale (page-backed) creative even if the listing still returns it
+    have_cr = {n: i for n, i in existing(g, "adcreatives").items() if i not in STALE_CREATIVES}
     dl = Path("/tmp/west_ab"); dl.mkdir(exist_ok=True)
-    creative, ig_ok = {}, bool(ig_id)
+    creative = {}
     for v in VIDEOS:
         if v["ad_name"] in have_cr:
             creative[v["key"]] = have_cr[v["ad_name"]]
@@ -187,21 +189,12 @@ def main() -> None:
         thumb = g.get_video_thumbnail(vid)
         if thumb:
             vd["image_url"] = thumb
-        spec = {"page_id": PAGE_ID, "video_data": vd}
-        if ig_ok:
-            spec["instagram_user_id"] = ig_id
-        try:
-            creative[v["key"]] = g.create_adcreative(ACCT, name=v["ad_name"],
-                                                     object_story_spec=spec, url_tags=UTM)["id"]
-        except Exception as e:  # noqa: BLE001
-            if not ig_ok:
-                raise
-            print(f"  IG id rejected ({str(e)[:90]}) — retrying page-backed")
-            ig_ok = False
-            spec.pop("instagram_user_id", None)
-            creative[v["key"]] = g.create_adcreative(ACCT, name=v["ad_name"],
-                                                     object_story_spec=spec, url_tags=UTM)["id"]
-        print(f"  {v['key']} creative {creative[v['key']]} (IG {'set' if ig_ok else 'page-backed'})")
+        # IG is required by the operator: no page-backed fallback
+        spec = {"page_id": PAGE_ID, "instagram_user_id": IG_USER_ID, "video_data": vd}
+        creative[v["key"]] = g.create_adcreative(ACCT, name=v["ad_name"],
+                                                 object_story_spec=spec, url_tags=UTM)["id"]
+        time.sleep(2)
+        print(f"  {v['key']} creative {creative[v['key']]} (IG martinyaoshi.us)")
 
     print("== campaigns / ad sets / ads ==")
     have_c = existing(g, "campaigns")
