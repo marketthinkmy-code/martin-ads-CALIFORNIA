@@ -37,6 +37,20 @@ Advantage+ audience (US West build, 2026-11-04, operator's choice — keep as is
 - 州级 ad sets: Advantage+ audience OFF, age 35–65 fixed.
 - Caveat when reading results: 州级 vs 城市级 now differ in geo AND Advantage+.
 
+## Monitoring (US West A/B, from 2026-11-04 — proposed, pending operator confirmation)
+Checks at 10:13 / 16:13 / 21:13 MYT, report in 华语. Account rules (config/config.yaml):
+CPL line RM85 is advisory only (auto-pause on CPL was turned off 2026-07-24 because it
+killed paid winners); CPA target RM1,000, ≤ RM1,300 healthy, > RM1,700 pause candidate,
+> RM2,200 with real sales = pause; CPA judged only after 14 days and ≥ RM1,000 spend.
+
+During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
+- 关: ad set spend ≥ RM150 with 0 registrations, or ≥ RM150 with CPL > RM170.
+  Max 3 per check; keep ≥ 1 ad set running in every campaign (each test cell keeps data).
+- ⚠ flag only: CPL RM85–170, or RM100–150 spent with 0 registrations.
+- 开: no reopening during the week unless the operator asks.
+- Scale: no budget changes during the test week; list candidates (CPL ≤ RM85, ≥ 3 reg).
+  Next rotation: CPL ≤ RM85 and ≥ 5 reg → +20–30% budget; CPA ≤ RM1,300 → scale.
+
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
   Thursday morning (2026-11-04 decision).
