@@ -78,17 +78,16 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 - Naming prefix: `US West | …` and `US East+Midwest | …`; ad sets named after targeting.
 - Videos uploaded via CI (the MCP upload path is not open on these accounts).
 
-## After every build — operator's manual checks (SOP, 2026-11-06)
-The operator always sets these by hand in Ads Manager before switching ads on. Until the
-build scripts set them through the API, every build report must list them as open steps:
+## Every build must set these (operator, 2026-11-06 — the operator only checks)
+The operator used to set these by hand after each build. From now on the build itself sets
+them; the operator only checks the preview and switches ads on.
 1. **Customer life cycle strategy → Strategy type = "Get conversions from all audiences"**
-   (ad set level; select all new ad sets → Edit → Strategy type).
-2. **Identity → WhatsApp phone number = +60 11-2548 7541** (ad level; Facebook Page
+   on every ad set.
+2. **Identity → WhatsApp phone number = +60 11-2548 7541** on every ad (with Facebook Page
    馬丁藥師｜兒童身高管理專家, Instagram martinyaoshi.us, Threads = Use Instagram account).
-3. After editing, **Publish** (Ads Manager saves bulk edits to draft first).
-4. Operator checks the preview and switches the new ad sets on themselves.
-To automate: once the operator has saved these on one ad set/ad, read its raw fields back
-and diff against an untouched one to find the API fields — never guess the field names.
+API fields: found with `adbot-diff-object-fields` (edited object vs untouched one), never
+guessed. Until a field is confirmed and in the build scripts, set it with a follow-up
+script on the new objects and read it back; tell the operator if anything is left manual.
 
 ## Copy rules
 - Name: **馬丁醫師**. Script: **繁體**. Punctuation: full-width （，。！？：）.
