@@ -78,16 +78,18 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 - Naming prefix: `US West | …` and `US East+Midwest | …`; ad sets named after targeting.
 - Videos uploaded via CI (the MCP upload path is not open on these accounts).
 
-## Every build must set these (operator, 2026-11-06 — the operator only checks)
-The operator used to set these by hand after each build. From now on the build itself sets
-them; the operator only checks the preview and switches ads on.
+## After every build — operator sets these by hand (2026-11-06)
+The API route for these two was not found (WhatsApp `wamo_whatsapp_identity_spec` read back
+empty even on operator-edited creatives; no strategy-type field showed in the ad set diff).
+The operator chose to keep doing them by hand, so every build report must remind them:
 1. **Customer life cycle strategy → Strategy type = "Get conversions from all audiences"**
-   on every ad set.
-2. **Identity → WhatsApp phone number = +60 11-2548 7541** on every ad (with Facebook Page
+   on every new ad set.
+2. **Identity → WhatsApp phone number = +60 11-2548 7541** on every new ad (Page
    馬丁藥師｜兒童身高管理專家, Instagram martinyaoshi.us, Threads = Use Instagram account).
-API fields: found with `adbot-diff-object-fields` (edited object vs untouched one), never
-guessed. Until a field is confirmed and in the build scripts, set it with a follow-up
-script on the new objects and read it back; tell the operator if anything is left manual.
+3. **Publish** after editing (Ads Manager saves bulk edits as a draft first).
+If a later before/after read-back on one object reveals the fields, automate them then.
+Tool for that: `adbot-diff-object-fields` with `only_fields` (cheap; the full dump gets
+rate-limited).
 
 ## Copy rules
 - Name: **馬丁醫師**. Script: **繁體**. Punctuation: full-width （，。！？：）.
