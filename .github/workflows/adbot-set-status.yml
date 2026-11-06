@@ -1,0 +1,30 @@
+name: adbot · set status (operator-approved)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Comma-separated campaign / ad set / ad ids"
+        required: true
+      status:
+        description: "ACTIVE or PAUSED"
+        required: true
+
+jobs:
+  set:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - name: Set status
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IDS: ${{ github.event.inputs.ids }}
+          STATUS: ${{ github.event.inputs.status }}
+        run: python -u scripts/set_status.py
