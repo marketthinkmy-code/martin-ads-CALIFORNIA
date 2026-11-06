@@ -11,6 +11,10 @@ on:
         description: "Pipe-separated US state names"
         required: false
         default: "California|Washington|Oregon|Nevada"
+      queries:
+        description: "Optional pipe-separated type:name:country lookups (overrides states)"
+        required: false
+        default: ""
 
 jobs:
   geo:
@@ -26,6 +30,7 @@ jobs:
           ADBOT_ROOT: ${{ github.workspace }}
           ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
           STATES: ${{ github.event.inputs.states }}
+          QUERIES: ${{ github.event.inputs.queries }}
           META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
         run: python scripts/geo_search.py
