@@ -81,6 +81,25 @@ def dump(g, oid, typ):
     return out
 
 
+def flatten(v, prefix=""):
+    """Nested dict/list -> {"a.b[0].c": leaf} so long objects diff by exact sub-path."""
+    if isinstance(v, dict):
+        out = {}
+        for k, x in v.items():
+            out.update(flatten(x, f"{prefix}.{k}" if prefix else k))
+        return out
+    if isinstance(v, list):
+        out = {}
+        for i, x in enumerate(v):
+            out.update(flatten(x, f"{prefix}[{i}]"))
+        return out or {prefix: []}
+    return {prefix: v}
+
+
+NOISE = ("thumbnail", "image_url", "image_hash", "video_id", "effective_", "permalink",
+         "account_id", "created_time", "updated_time", "_nc_", "url_tags")
+
+
 def main() -> None:
     g = graph_client(load_settings())
     pairs = [x.split("=", 1) for x in os.environ["IDS"].split("|") if "=" in x]
@@ -88,8 +107,16 @@ def main() -> None:
     data = {label: dump(g, oid, typ) for label, oid in pairs}
     for label, d in data.items():
         print(f"===== {label} ({d.get('id')}, {d.get('_type')}) =====")
-        print(json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True)[:12000])
+        print(json.dumps(d, ensure_ascii=False, sort_keys=True)[:3000])
     labels = list(data)
+    flat = {l: flatten(d) for l, d in data.items()}
+    print("===== SUB-FIELDS THAT DIFFER (noise filtered) =====")
+    for k in sorted(set().union(*[set(f) for f in flat.values()])):
+        if any(n in k for n in NOISE):
+            continue
+        vals = [json.dumps(flat[l].get(k), ensure_ascii=False) for l in labels]
+        if len(set(vals)) > 1:
+            print(f"- {k}: " + " | ".join(f"{l}={v[:160]}" for l, v in zip(labels, vals)))
     keys = sorted(set().union(*[set(d) for d in data.values()]))
     print("===== FIELDS THAT DIFFER =====")
     for k in keys:
