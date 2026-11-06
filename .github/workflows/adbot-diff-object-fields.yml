@@ -9,6 +9,10 @@ on:
       ids:
         description: "Pipe-separated label=id pairs of the SAME object type"
         required: true
+      type:
+        description: "adset | ad | creative"
+        required: true
+        default: "adset"
 
 jobs:
   diff:
@@ -26,4 +30,5 @@ jobs:
           META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
           IDS: ${{ github.event.inputs.ids }}
+          TYPE: ${{ github.event.inputs.type }}
         run: python -u scripts/diff_object_fields.py
