@@ -78,6 +78,18 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 - Naming prefix: `US West | …` and `US East+Midwest | …`; ad sets named after targeting.
 - Videos uploaded via CI (the MCP upload path is not open on these accounts).
 
+## After every build — operator's manual checks (SOP, 2026-11-06)
+The operator always sets these by hand in Ads Manager before switching ads on. Until the
+build scripts set them through the API, every build report must list them as open steps:
+1. **Customer life cycle strategy → Strategy type = "Get conversions from all audiences"**
+   (ad set level; select all new ad sets → Edit → Strategy type).
+2. **Identity → WhatsApp phone number = +60 11-2548 7541** (ad level; Facebook Page
+   馬丁藥師｜兒童身高管理專家, Instagram martinyaoshi.us, Threads = Use Instagram account).
+3. After editing, **Publish** (Ads Manager saves bulk edits to draft first).
+4. Operator checks the preview and switches the new ad sets on themselves.
+To automate: once the operator has saved these on one ad set/ad, read its raw fields back
+and diff against an untouched one to find the API fields — never guess the field names.
+
 ## Copy rules
 - Name: **馬丁醫師**. Script: **繁體**. Punctuation: full-width （，。！？：）.
 - Paragraph blocks, lines stacked inside a block, blank line only between blocks. No markdown.
