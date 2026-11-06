@@ -56,7 +56,8 @@ FIELDS = {
         playable_asset_id portrait_customizations product_data product_set_id
         recommender_settings regional_regulation_disclaimer_spec source_facebook_post_id
         source_instagram_media_id status template_url template_url_spec thumbnail_id
-        thumbnail_url title url_tags use_page_actor_override video_id""".split(),
+        thumbnail_url title url_tags use_page_actor_override video_id
+        wamo_whatsapp_identity_spec""".split(),
 }
 
 SKIP = {"targeting", "adlabels", "recommendations", "insights", "copies", "previews",
