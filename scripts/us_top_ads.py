@@ -13,6 +13,7 @@ Prints ad names and counts only — no customer data leaves the runner.
 from __future__ import annotations
 
 import datetime as dt
+import os
 import re
 from collections import Counter, defaultdict
 
@@ -53,12 +54,20 @@ def market(campaign: str) -> str:
         return "East+Midwest"
     if "pnw" in c:
         return "PNW"
-    if "cal" in c or "加州" in c:
+    if "cal" in c or "加州" in c or "us west" in c:
         return "California"
     return "Other"
 
 
+# MARKETS=California,PNW limits the ranking to those markets (West); spend then comes only
+# from the accounts that serve them. Empty = every US market (Canada always excluded).
+WEST = {"California", "PNW"}
+
+
 def main() -> None:
+    only = {m.strip() for m in os.environ.get("MARKETS", "").split(",") if m.strip()}
+    accounts = ({"California": US_ACCOUNTS["California"]} if only and only <= WEST
+                else US_ACCOUNTS)
     s = load_settings()
     today = (dt.datetime.utcnow() + dt.timedelta(hours=8)).date()
     values = SheetsClient(s.secrets.google_sa_json).read_tab(s.cpa.spreadsheet_id, s.cpa.sales_tab)
@@ -81,7 +90,7 @@ def main() -> None:
     g = graph_client(s)
     tok = result_action_type(s.meta.conversion_event)
     spend, regs, accts = defaultdict(float), defaultdict(float), defaultdict(set)
-    for label, acct in US_ACCOUNTS.items():
+    for label, acct in accounts.items():
         try:
             rows = g.account_insights(acct, level="ad", fields="ad_name,spend,actions",
                                       date_preset="maximum")
@@ -97,7 +106,8 @@ def main() -> None:
     def win(rows, days):
         return sum(1 for r in rows if r.date and r.date > today - dt.timedelta(days=days))
 
-    print(f"=== US TOP ADS · merged variants · today MYT={today} ===")
+    print(f"=== US TOP ADS · merged variants · today MYT={today} · markets: "
+          f"{', '.join(sorted(only)) or 'all US'} ===")
     print(f"Tab '{s.cpa.sales_tab}': {len(sales)} sales · {unattributed} with no ad name")
     print("Sales by market (whole tab): " + ", ".join(f"{m} {n}" for m, n in mk_total.most_common()))
     last_sale = max((x.date for x in sales if x.date), default=None)
@@ -105,7 +115,8 @@ def main() -> None:
 
     table = []
     for k, rows in by_key.items():
-        us = [r for r in rows if market(r.campaign) != "Canada"]
+        us = [r for r in rows if market(r.campaign) != "Canada"
+              and (not only or market(r.campaign) in only)]
         ca = len(rows) - len(us)
         if not us:
             continue

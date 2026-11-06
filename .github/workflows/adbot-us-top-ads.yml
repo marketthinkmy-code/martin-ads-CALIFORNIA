@@ -4,7 +4,12 @@ name: adbot · US top ads (merged variants + spend)
 # spend from the US accounts. Prints ad names and counts only.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      markets:
+        description: "Comma-separated markets to rank (e.g. California,PNW for West); empty = all US"
+        required: false
+        default: ""
 
 jobs:
   report:
@@ -23,4 +28,5 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          MARKETS: ${{ github.event.inputs.markets }}
         run: python scripts/us_top_ads.py
