@@ -67,6 +67,12 @@ SKIP = {"targeting", "adlabels", "recommendations", "insights", "copies", "previ
 
 
 def dump(g, oid, typ):
+    only = [f.strip() for f in os.environ.get("ONLY_FIELDS", "").split(",") if f.strip()]
+    if only:  # one request, raw result or the API's error — cheap under rate limits
+        try:
+            return {"_type": typ, **g._request("GET", oid, params={"fields": ",".join(only)})}
+        except Exception as e:  # noqa: BLE001
+            return {"_type": typ, "_error": str(e)[:400]}
     names = FIELDS[typ]
     out = {"_type": typ}
     for i in range(0, len(names), 25):

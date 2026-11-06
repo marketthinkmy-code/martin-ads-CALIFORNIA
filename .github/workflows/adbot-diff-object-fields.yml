@@ -13,6 +13,10 @@ on:
         description: "adset | ad | creative"
         required: true
         default: "adset"
+      only_fields:
+        description: "Optional comma-separated fields to read in one request (skips the full dump)"
+        required: false
+        default: ""
 
 jobs:
   diff:
@@ -31,4 +35,5 @@ jobs:
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
           IDS: ${{ github.event.inputs.ids }}
           TYPE: ${{ github.event.inputs.type }}
+          ONLY_FIELDS: ${{ github.event.inputs.only_fields }}
         run: python -u scripts/diff_object_fields.py
