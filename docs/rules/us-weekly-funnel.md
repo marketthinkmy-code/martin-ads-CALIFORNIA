@@ -45,8 +45,8 @@ killed paid winners); CPA target RM1,000, ≤ RM1,300 healthy, > RM1,700 pause c
 
 During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 - 关: ad set spend ≥ RM150 with 0 registrations, or ≥ RM150 with CPL > RM170.
-  Max 3 per check (registrations arrive late and data can be wrong; caps the damage of a
-  bad call). Keep ≥ 1 ad set running in every campaign so each test cell keeps data —
+  No per-check limit — pause every ad set that meets the criteria (operator, 2026-11-07;
+  replaces the earlier max-3 cap). Keep ≥ 1 ad set running in every campaign so each test cell keeps data —
   EXCEPT when all 3 ad sets in a campaign meet the pause criteria: that cell has lost, so
   pause the whole campaign and record the verdict with its CPL (operator, 2026-11-06).
 - ⚠ flag only: CPL RM85–170, or RM100–150 spent with 0 registrations.
