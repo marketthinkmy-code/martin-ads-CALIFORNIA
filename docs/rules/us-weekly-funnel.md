@@ -57,7 +57,7 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 ### Operator decisions during the 11/4–11/12 West test
 - 2026-11-07: operator paused the 8 old ad sets with 0 registrations at ~RM133–145.
 - 2026-11-08: operator chose to pause the 5 zero-registration V10 ad sets early (V10: 1 reg on
-  ~RM693) and the whole 州级 F&R campaign (verdict: lost — 0 registrations on ~RM750 across
+  ~RM693) and the whole 州级 F&R campaign (verdict: lost — 0 registrations on ~RM645 across
   V1/V3/V4/V2/V10). Operator raised 城市级 F&R V4 (3 reg, CPL RM61) from RM50 to RM65/day —
   an approved exception to "no budget changes during the test week".
 
