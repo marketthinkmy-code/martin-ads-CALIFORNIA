@@ -7,8 +7,13 @@ on:
         description: "Comma-separated campaign / ad set / ad ids"
         required: true
       status:
-        description: "ACTIVE or PAUSED"
-        required: true
+        description: "ACTIVE or PAUSED (leave empty to change budget only)"
+        required: false
+        default: ""
+      daily_budget:
+        description: "New daily budget in minor units (6500 = RM65); empty = unchanged"
+        required: false
+        default: ""
 
 jobs:
   set:
@@ -27,4 +32,5 @@ jobs:
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
           IDS: ${{ github.event.inputs.ids }}
           STATUS: ${{ github.event.inputs.status }}
+          DAILY_BUDGET: ${{ github.event.inputs.daily_budget }}
         run: python -u scripts/set_status.py
