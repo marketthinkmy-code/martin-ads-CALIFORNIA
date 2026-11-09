@@ -71,6 +71,16 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   KL 00:00–16:00. A pause decided at the 10:13 or 16:13 check comes after that day's money is
   spent. Make pause calls at the 21:13 MYT check, before the US day starts.
 
+### East+Midwest new-video build (2026-11-09, for the 11/18 live)
+- Operator approved copy + plan: campaign `US East+Midwest | 城市级 | F&R | 新影片 V1–V8`
+  (120255732277170558), 8 ad sets × RM50 (RM400/day), PAUSED. Targeting cloned from the
+  EM 城市级 F&R V1 ad set (West's winning cell). Per-video copy: scripts/new8_copy.py.
+- Ad names = operator's script titles ("Video 3：完蛋了！"). Drive files "Martin Sep Video
+  0N" = Video N — confirmed by speech-to-text of each opening (adbot-drive-video-frames)
+  before the build. Old and new "Video N" share numbers but are different videos.
+- Spend note: EM now holds 18 + 8 = 26 ad sets (RM1,300/day if all on). Recommended at
+  switch-on: old 城市级 9 + new 8 (≈ RM850/day); operator decides.
+
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
   Thursday morning (2026-11-04 decision).
