@@ -1,7 +1,11 @@
-name: adbot · build US East+Midwest new videos V1–V8 (1 campaign × 8, PAUSED)
+name: adbot · build new videos V1–V8 for a US side (1 campaign × 8, PAUSED)
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      side:
+        description: em (East+Midwest) or west
+        default: em
 
 concurrency:
   group: adbot-build-em-new8
@@ -25,4 +29,5 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
           META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          SIDE: ${{ github.event.inputs.side }}
         run: python -u scripts/build_em_new8.py
