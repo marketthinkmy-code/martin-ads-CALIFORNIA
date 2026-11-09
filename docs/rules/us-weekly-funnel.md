@@ -60,6 +60,16 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   ~RM693) and the whole 州级 F&R campaign (verdict: lost — 0 registrations on ~RM645 across
   V1/V3/V4/V2/V10). Operator raised 城市级 F&R V4 (3 reg, CPL RM61) from RM50 to RM65/day —
   an approved exception to "no budget changes during the test week".
+- 2026-11-09 (12:30 MYT): 11/8 spent RM1,255 for 3 registrations (CPL RM418) — RM620 of it on
+  14 ad sets that were paused only after the US day had already run (0 registrations). To cap
+  spend before the 11/11 live, operator chose plan "D": pause the 3 CPL ~RM130 ad sets
+  (城市级 Broad V1, 城市级 F&R V3, 城市级 Parents V3 — this leaves 城市级 Broad and 城市级 Parents
+  with nothing running; operator accepted losing those cells' data), raise 城市级 F&R V1
+  (5 reg, CPL RM54) RM50→RM65 and 州级 Parents V2 (3 reg, CPL RM64) RM50→RM60. Running after:
+  4 ad sets, RM240/day.
+- Lesson (timing): the 加州 account's day is Asia/KL, so the US day (08:00–24:00 PST) is
+  KL 00:00–16:00. A pause decided at the 10:13 or 16:13 check comes after that day's money is
+  spent. Make pause calls at the 21:13 MYT check, before the US day starts.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
