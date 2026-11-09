@@ -1,0 +1,32 @@
+name: adbot · Drive video frames (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: Comma-separated Drive file ids (in video order)
+        required: true
+
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - run: pip install .
+      - name: Frames
+        env:
+          ADBOT_ROOT: ${{ github.workspace }}
+          ADBOT_CONFIG: ${{ github.workspace }}/config/config.yaml
+          GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          IDS: ${{ github.event.inputs.ids }}
+        run: python -u scripts/drive_video_frames.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frames
+          path: frames/
+          retention-days: 3
