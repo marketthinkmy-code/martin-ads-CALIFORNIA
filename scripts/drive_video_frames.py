@@ -2,7 +2,9 @@
 
 Used to confirm which Drive file is which scripted video before a build (burned-in
 subtitles show the hook line). Env IDS = comma-separated Drive file ids; writes
-frames/<n>_<drive id>.jpg plus the file name and duration to the log.
+frames/<n>_<drive id>.jpg plus the file name and duration to the log. With
+TRANSCRIBE_SECONDS=N it also prints a speech-to-text of the first N seconds (faster-whisper),
+so the opening line can be checked against the script from the log alone.
 """
 from __future__ import annotations
 
@@ -22,6 +24,11 @@ def main() -> None:
     d = drive_client(load_settings())
     out = Path("frames"); out.mkdir(exist_ok=True)
     tmp = Path("/tmp/vf"); tmp.mkdir(exist_ok=True)
+    secs = int(os.environ.get("TRANSCRIBE_SECONDS") or 0)
+    model = None
+    if secs:
+        from faster_whisper import WhisperModel
+        model = WhisperModel("small", device="cpu", compute_type="int8")
     for n, fid in enumerate(ids, 1):
         meta = d._svc.files().get(fileId=fid, fields="name,size",
                                   supportsAllDrives=True).execute()
@@ -50,6 +57,13 @@ def main() -> None:
                         "-q:v", "4", str(sheet)], check=True)
         print(f"{n}. {fid}  {meta['name']}  {int(meta.get('size', 0))/1e6:.1f}MB  "
               f"{dur:.1f}s  -> {sheet.name} ({rows}x{cols})", flush=True)
+        if model:
+            wav = tmp / f"{fid}.wav"
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(path), "-t", str(secs),
+                            "-ac", "1", "-ar", "16000", str(wav)], check=True)
+            segs, _ = model.transcribe(str(wav), language="zh")
+            print("   speech: " + " ".join(x.text.strip() for x in segs), flush=True)
+            wav.unlink()
         path.unlink()
 
 

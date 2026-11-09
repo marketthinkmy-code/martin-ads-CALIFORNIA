@@ -6,6 +6,9 @@ on:
       ids:
         description: Comma-separated Drive file ids (in video order)
         required: true
+      transcribe_seconds:
+        description: Also transcribe the first N seconds of speech (0 = off)
+        default: "0"
 
 jobs:
   frames:
@@ -17,6 +20,8 @@ jobs:
           python-version: "3.11"
       - run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
       - run: pip install .
+      - run: pip install faster-whisper
+        if: ${{ github.event.inputs.transcribe_seconds != '0' }}
       - name: Frames
         env:
           ADBOT_ROOT: ${{ github.workspace }}
@@ -24,6 +29,7 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           IDS: ${{ github.event.inputs.ids }}
+          TRANSCRIBE_SECONDS: ${{ github.event.inputs.transcribe_seconds }}
         run: python -u scripts/drive_video_frames.py
       - uses: actions/upload-artifact@v4
         with:
