@@ -78,6 +78,11 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 - Ad names = operator's script titles ("Video 3：完蛋了！"). Drive files "Martin Sep Video
   0N" = Video N — confirmed by speech-to-text of each opening (adbot-drive-video-frames)
   before the build. Old and new "Video N" share numbers but are different videos.
+- West copy of the same build (operator, 2026-11-09): `US West | 城市级 | F&R | 新影片 V1–V8`
+  (120249156726090259), 8 ad sets × RM50, PAUSED, /register, targeting cloned from West
+  城市级 F&R V1 (incl. its 4 paid-list/registrant exclusions). Same 8 videos attached by id
+  from the 美東美中 uploads. If the operator switches any of it on during a West week, the
+  scheduled checks monitor those ad sets under the same rules.
 - Spend note: EM now holds 18 + 8 = 26 ad sets (RM1,300/day if all on). Recommended at
   switch-on: old 城市级 9 + new 8 (≈ RM850/day); operator decides.
 
