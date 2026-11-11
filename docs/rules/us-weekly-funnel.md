@@ -68,6 +68,11 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   with nothing running; operator accepted losing those cells' data), raise 城市级 F&R V1
   (5 reg, CPL RM54) RM50→RM65 and 州级 Parents V2 (3 reg, CPL RM64) RM50→RM60. Running after:
   4 ad sets, RM240/day.
+- 2026-11-11 (15:41 MYT, just before the live-day US morning): results worsened (11/10 RM631 /
+  3 reg; 11/11 to 10:13 RM298 / 0 reg; pixel healthy). Operator paused 7 ad sets early, before
+  they reached the rule line: new V1/V3/V4/V6 (0 reg on RM66–82 each), 州级 Parents V2 (3 reg,
+  CPL ~RM114), 城市级 F&R V4 (4 reg, ~RM103), 州级 Broad V4 (4 reg, ~RM100). Kept: 城市级 F&R V1
+  (6 reg, CPL ~RM71) + new V2/V5/V7/V8 (1 reg each) ≈ RM185/day.
 - Lesson (timing): the 加州 account's day is Asia/KL, so the US day (08:00–24:00 PST) is
   KL 00:00–16:00. A pause decided at the 10:13 or 16:13 check comes after that day's money is
   spent. Make pause calls at the 21:13 MYT check, before the US day starts.
