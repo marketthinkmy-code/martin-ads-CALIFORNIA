@@ -107,6 +107,9 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   ~RM124 / 0. Operator approved a second new-video campaign `US East+Midwest | Broad A+ |
   新影片 V1–V8` (120255769879730558): 7 states + Ontario, no city exclusion, Advantage+ ON,
   8 × RM50, PAUSED. East+Midwest now 34 ad sets ≈ RM1,700/day if all on.
+- 2026-11-11: operator chose to keep the Broad A+ new-video campaign on the whole region (no
+  city exclusion) even though it overlaps every other East+Midwest campaign, including both
+  sides of the state/city A/B. Read the A/B with that caveat.
 - Spend note: EM now holds 18 + 8 = 26 ad sets (RM1,300/day if all on). Recommended at
   switch-on: old 城市级 9 + new 8 (≈ RM850/day); operator decides.
 
