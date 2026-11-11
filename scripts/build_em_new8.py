@@ -45,6 +45,15 @@ SIDES = {
                  reuse={1: "1479182944187498", 2: "1452701453491488", 3: "1004970651935400",
                         4: "2624501621402291", 5: "2636186750226231", 6: "2327068894794353",
                         7: "1128268050183585", 8: "2368479050560610"}),
+    # operator 2026-11-11: East+Midwest history — all 3 paid sales came from Broad Advantage+
+    # across the whole region, so the 8 new videos also go there (RM50 each). Targeting is
+    # built (not cloned): 7 states + Ontario, no city exclusion, Advantage+ audience ON.
+    "em_broad": dict(mod=em, campaign="US East+Midwest | Broad A+ | 新影片 V1–V8",
+                     template=None,
+                     prefix="Broad A+ | 7州+Ontario | 新",
+                     reuse={1: "1479182944187498", 2: "1452701453491488", 3: "1004970651935400",
+                            4: "2624501621402291", 5: "2636186750226231", 6: "2327068894794353",
+                            7: "1128268050183585", 8: "2368479050560610"}),
 }
 SIDE = SIDES[os.environ.get("SIDE", "em").strip() or "em"]
 M = SIDE["mod"]
@@ -92,15 +101,20 @@ def main() -> None:
 
     print("== template targeting ==", flush=True)
     camps = existing(g, "campaigns")
-    tcid = camps.get(TEMPLATE_CAMPAIGN)
-    if not tcid:
-        raise SystemExit(f"template campaign not found: {TEMPLATE_CAMPAIGN}")
-    tsets = g._get_all(f"{tcid}/adsets", {"fields": "id,name,targeting"})
-    tmpl = next((a for a in tsets if a["name"].endswith("| V1")), None)
-    if not tmpl:
-        raise SystemExit(f"no V1 ad set in {TEMPLATE_CAMPAIGN}: {[a['name'] for a in tsets]}")
-    tgt = {k: v for k, v in tmpl["targeting"].items() if k not in READ_ONLY_TARGETING}
-    print(f"  cloning '{tmpl['name']}' ({tmpl['id']})")
+    if TEMPLATE_CAMPAIGN is None:
+        tgt = em.targeting({"geo": {"regions": em.STATE_REGIONS, "location_types": ["home", "recent"]},
+                            "advantage": True, "exclude_geo": None}, {"flex": None})
+        print("  built: 7 states + Ontario, no city exclusion, Advantage+ ON, Broad")
+    else:
+        tcid = camps.get(TEMPLATE_CAMPAIGN)
+        if not tcid:
+            raise SystemExit(f"template campaign not found: {TEMPLATE_CAMPAIGN}")
+        tsets = g._get_all(f"{tcid}/adsets", {"fields": "id,name,targeting"})
+        tmpl = next((a for a in tsets if a["name"].endswith("| V1")), None)
+        if not tmpl:
+            raise SystemExit(f"no V1 ad set in {TEMPLATE_CAMPAIGN}: {[a['name'] for a in tsets]}")
+        tgt = {k: v for k, v in tmpl["targeting"].items() if k not in READ_ONLY_TARGETING}
+        print(f"  cloning '{tmpl['name']}' ({tmpl['id']})")
     print(f"    geo       {json.dumps(tgt.get('geo_locations'), ensure_ascii=False)}")
     print(f"    advantage {tgt.get('targeting_automation')}  age {tgt.get('age_min')}-{tgt.get('age_max')}")
     print(f"    excl aud  {[x.get('id') for x in tgt.get('excluded_custom_audiences', [])]}")

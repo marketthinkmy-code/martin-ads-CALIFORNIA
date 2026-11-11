@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       side:
-        description: em (East+Midwest) or west
+        description: em (East+Midwest city F&R), em_broad (East+Midwest Broad A+) or west
         default: em
 
 concurrency:
