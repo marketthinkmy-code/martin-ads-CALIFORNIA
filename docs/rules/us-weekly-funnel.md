@@ -97,6 +97,10 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   in Ads Manager first) and cut its 8 ad sets from RM50 to RM30/day. West running: old 4
   (RM240) + new 8 (RM240) = RM480/day. At RM30/day a new ad set needs ~5 days to reach the
   RM150 pause line, so this week they are mostly flag-only.
+- 2026-11-11 operator decision: East+Midwest is judged on its own — do NOT carry West results
+  over. Keep all 26 ad sets (18 state/city A/B + 8 new videos, RM50 each, ≈ RM1,300/day) and
+  run the full state-vs-city A/B there too. Switch-on: Thu 2026-11-12 13:00 MYT (midnight EST,
+  start of the account day), after setting Strategy type + WhatsApp by hand.
 - Spend note: EM now holds 18 + 8 = 26 ad sets (RM1,300/day if all on). Recommended at
   switch-on: old 城市级 9 + new 8 (≈ RM850/day); operator decides.
 
