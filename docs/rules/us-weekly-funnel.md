@@ -101,6 +101,12 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   over. Keep all 26 ad sets (18 state/city A/B + 8 new videos, RM50 each, ≈ RM1,300/day) and
   run the full state-vs-city A/B there too. Switch-on: Thu 2026-11-12 13:00 MYT (midnight EST,
   start of the account day), after setting Strategy type + WhatsApp by hand.
+- 2026-11-11: East+Midwest history (register + paid tabs, Aug 22–Sep 16; tool
+  adbot-em-adset-rank): all 3 East+Midwest paid sales came from Broad Advantage+ (RM8,478,
+  112 registrations, CPL ~RM76); F&R CPL ~RM74 / 0 paid, Food & Drink ~RM94 / 0, Parents
+  ~RM124 / 0. Operator approved a second new-video campaign `US East+Midwest | Broad A+ |
+  新影片 V1–V8` (120255769879730558): 7 states + Ontario, no city exclusion, Advantage+ ON,
+  8 × RM50, PAUSED. East+Midwest now 34 ad sets ≈ RM1,700/day if all on.
 - Spend note: EM now holds 18 + 8 = 26 ad sets (RM1,300/day if all on). Recommended at
   switch-on: old 城市级 9 + new 8 (≈ RM850/day); operator decides.
 
