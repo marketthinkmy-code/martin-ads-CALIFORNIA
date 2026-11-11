@@ -73,6 +73,10 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   they reached the rule line: new V1/V3/V4/V6 (0 reg on RM66–82 each), 州级 Parents V2 (3 reg,
   CPL ~RM114), 城市级 F&R V4 (4 reg, ~RM103), 州级 Broad V4 (4 reg, ~RM100). Kept: 城市级 F&R V1
   (6 reg, CPL ~RM71) + new V2/V5/V7/V8 (1 reg each) ≈ RM185/day.
+- 2026-11-11: East+Midwest — operator decided to switch on everything as built (18 state/city
+  A/B ad sets + all 8 new-video ad sets at RM50, ≈ RM1,300/day), NOT trimmed by West results,
+  so EM runs its own full test. Switch-on: Thu 11/12 13:00 MYT (EST midnight = start of the EM
+  account day), after setting Strategy type + WhatsApp on all 26 in the morning.
 - Lesson (timing): the 加州 account's day is Asia/KL, so the US day (08:00–24:00 PST) is
   KL 00:00–16:00. A pause decided at the 10:13 or 16:13 check comes after that day's money is
   spent. Make pause calls at the 21:13 MYT check, before the US day starts.
