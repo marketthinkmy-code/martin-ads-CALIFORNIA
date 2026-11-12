@@ -177,6 +177,9 @@ lessons apply there.
   reopen them at the MYT Sat 11/14 19:13 check (06:13 EST), so the budget is spread over the
   week instead of burnt in the first days. After reopening they're judged by the normal rules
   with spend counted from 11/12.
+- Correction ~22:20 MYT: Broad A+ 新V5 had a registration attributed after the read, so it was
+  paused by mistake; reopened. The operator put these 6 ad sets back to RM50/day; the 28
+  reserve ad sets stay at RM35. Late attribution: re-read registrations right before pausing.
 - Lesson for future switch-ons: start new ad sets at a lower budget (~RM35) and let Meta
   pace; a fresh launch burns its first day's budget in the first US morning hours.
 
