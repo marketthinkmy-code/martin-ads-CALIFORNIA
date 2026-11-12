@@ -127,6 +127,23 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   could act; the KL-day timing gap let V2/V5 run past the line on live day (no check between
   21:13 MYT and the end of the US day) — add a mid-US-day check on the last two days.
 
+### Approved for the next rotations (operator 2026-11-12: "下一场直播就执行所有你发现的和建议的")
+Next West (live US Wed 2026-11-25, switch-on MYT Thu 2026-11-19 after the East+Midwest live):
+- City level is the core; F&R is the lead audience. State level keeps only Broad + Parents as
+  the control — no 州级 F&R.
+- Videos: keep old V4 + V1 and new Video 8; retest new Video 2 / 5 / 7; drop V10, old V2
+  (except 州级 Parents V2) and new Video 1 / 3 / 4 / 6.
+- Start with 10–12 ad sets (not 22). Copy + plan shown to the operator for approval first;
+  build PAUSED; operator sets Strategy type + WhatsApp by hand.
+- Monitoring: pause calls at the check before the US day starts (West 21:13 MYT, East
+  19:13 MYT); on the last two US days before a live, add a mid-US-day check (West ~05:13 MYT,
+  East ~02:13 MYT) so nothing runs past the line on live day; tighten early if the last days
+  slow down.
+- CPA verdict for the 11/4–11/12 West week ~2026-11-26 (14 days after the live) from the paid
+  list; scale = CPL ≤ RM85 and ≥ 5 registrations → +20–30%.
+East+Midwest (11/12–11/19) keeps all 34 ad sets (operator, 2026-11-11) — only the monitoring
+lessons apply there (mid-US-day checks on 11/17 and 11/18 EST).
+
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
   Thursday morning (2026-11-04 decision).
