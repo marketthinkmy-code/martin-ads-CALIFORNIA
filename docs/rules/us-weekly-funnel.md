@@ -113,6 +113,20 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
 - Spend note: EM now holds 18 + 8 = 26 ad sets (RM1,300/day if all on). Recommended at
   switch-on: old 城市级 9 + new 8 (≈ RM850/day); operator decides.
 
+### West 11/4–11/12 result (CPL only; CPA verdict after 11/26 with the paid list)
+- Total RM6,779 / 34 registrations (CPL ~RM199). All 7 US West campaigns paused at campaign
+  level 2026-11-12 10:00 MYT (operator request).
+- Geo: 城市级 RM3,179 / 18 (CPL ~177; + new-video campaign RM954 / 6) vs 州级 RM2,646 / 10
+  (CPL ~265). City wins, but city also had Advantage+ ON and 州级 OFF.
+- Cells: 城市级 F&R best (RM1,472 / 12, CPL ~123); 州级 F&R worst (RM659 / 0).
+- Old videos: V4 RM1,521 / 10 (~152), V1 RM1,400 / 9 (~156), V3 RM1,121 / 5 (~224),
+  V2 RM990 / 3 (~330, all from 州级 Parents), V10 RM793 / 1 (~793).
+- New videos (city F&R, from 11/9): V8 RM174 / 3 (~58), V2 RM164 / 1, V5 RM156 / 1,
+  V7 RM131 / 1, V1/V3/V4/V6 RM74–90 / 0 each.
+- Lessons: too many ad sets at launch (22 → RM1,100+/day) burned budget before the rules
+  could act; the KL-day timing gap let V2/V5 run past the line on live day (no check between
+  21:13 MYT and the end of the US day) — add a mid-US-day check on the last two days.
+
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
   Thursday morning (2026-11-04 decision).
