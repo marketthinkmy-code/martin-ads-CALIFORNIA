@@ -166,7 +166,13 @@ CPMs; watch spend closely 11/26–11/30):
 - CPA verdict for the 11/4–11/12 West week ~2026-11-26 (14 days after the live) from the paid
   list; scale = CPL ≤ RM85 and ≥ 3 registrations → +20% (operator 2026-11-12).
 East+Midwest (11/12–11/19) keeps all 34 ad sets (operator, 2026-11-11) — only the monitoring
-lessons apply there (mid-US-day checks on 11/17 and 11/18 EST).
+lessons apply there.
+- 2026-11-12: switched on 06:00 EST; by 08:52 EST it had spent RM1,518 (5 registrations, CPM
+  RM170–300) — Meta front-loaded almost a full day's budget in ~3 h. Operator cut all 34 ad
+  sets RM50 → RM35/day (≈ RM1,190/day) at ~22:00 MYT and asked to watch closely: EM checks
+  run daily at 19:13 / 23:13 / 02:13 / 10:13 MYT (06:13 / 10:13 / 13:13 / 21:13 EST).
+- Lesson for future switch-ons: start new ad sets at a lower budget (~RM35) and let Meta
+  pace; a fresh launch burns its first day's budget in the first US morning hours.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
