@@ -171,6 +171,12 @@ lessons apply there.
   RM170–300) — Meta front-loaded almost a full day's budget in ~3 h. Operator cut all 34 ad
   sets RM50 → RM35/day (≈ RM1,190/day) at ~22:00 MYT and asked to watch closely: EM checks
   run daily at 19:13 / 23:13 / 02:13 / 10:13 MYT (06:13 / 10:13 / 13:13 / 21:13 EST).
+- 2026-11-12 ~22:10 MYT, reserve plan (operator): keep only the 5 ad sets with a registration
+  running (Broad A+ 新V8, 城市级 F&R 新V6, 城市级 F&R V1, 城市级 Parents V3, 州级 Broad V4);
+  pause the other 29 (0 registrations, RM1,349.71 spent) as reserve — not a rule-pause — and
+  reopen them at the MYT Sat 11/14 19:13 check (06:13 EST), so the budget is spread over the
+  week instead of burnt in the first days. After reopening they're judged by the normal rules
+  with spend counted from 11/12.
 - Lesson for future switch-ons: start new ad sets at a lower budget (~RM35) and let Meta
   pace; a fresh launch burns its first day's budget in the first US morning hours.
 
