@@ -64,17 +64,18 @@ CPL line RM85 is advisory only (auto-pause on CPL was turned off 2026-07-24 beca
 killed paid winners); CPA target RM1,000, ≤ RM1,300 healthy, > RM1,700 pause candidate,
 > RM2,200 with real sales = pause; CPA judged only after 14 days and ≥ RM1,000 spend.
 
-During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
-- 关: ad set spend ≥ RM130 with 0 registrations, or ≥ RM130 with CPL > RM130
-  (operator, 2026-11-09 evening; earlier the same day RM150/RM150, before that RM150/RM170).
-  No per-check limit — pause every ad set that meets the criteria (operator, 2026-11-07;
-  replaces the earlier max-3 cap). Keep ≥ 1 ad set running in every campaign so each test cell keeps data —
-  EXCEPT when all 3 ad sets in a campaign meet the pause criteria: that cell has lost, so
-  pause the whole campaign and record the verdict with its CPL (operator, 2026-11-06).
-- ⚠ flag only: CPL RM85–130, or RM100–130 spent with 0 registrations.
+During a one-week test CPA can't be judged, so in-week decisions are CPL-based
+(operator, 2026-11-12 — replaces RM130/RM130, and before that RM150/RM170):
+- 关: ad set spend ≥ RM100 with 0 registrations, or ≥ RM100 with CPL > RM100.
+  Every ad set is judged on its own: no per-check limit, and NO "keep ≥ 1 per campaign"
+  rule (removed by the operator 2026-11-12). If every ad set of a campaign gets paused, the
+  campaign simply has nothing running — record that cell's result in the report.
+- ⚠ flag only: CPL RM85–100.
 - 开: no reopening during the week unless the operator asks.
-- Scale: no budget changes during the test week; list candidates (CPL ≤ RM85, ≥ 3 reg).
-  Next rotation: CPL ≤ RM85 and ≥ 5 reg → +20–30% budget; CPA ≤ RM1,300 → scale.
+- Scale: no budget changes during the week unless the operator asks. CPL ≤ RM85 with ≥ 3
+  registrations → list it; next rotation that ad set gets +20% budget.
+- CPA (≥ 14 days after the live and ≥ RM1,000 spend): ≤ RM1,300 healthy/scale, > RM1,700
+  pause candidate, > RM2,200 with real sales = pause.
 
 ### Operator decisions during the 11/4–11/12 West test
 - 2026-11-07: operator paused the 8 old ad sets with 0 registrations at ~RM133–145.
@@ -163,7 +164,7 @@ CPMs; watch spend closely 11/26–11/30):
   East ~02:13 MYT) so nothing runs past the line on live day; tighten early if the last days
   slow down.
 - CPA verdict for the 11/4–11/12 West week ~2026-11-26 (14 days after the live) from the paid
-  list; scale = CPL ≤ RM85 and ≥ 5 registrations → +20–30%.
+  list; scale = CPL ≤ RM85 and ≥ 3 registrations → +20% (operator 2026-11-12).
 East+Midwest (11/12–11/19) keeps all 34 ad sets (operator, 2026-11-11) — only the monitoring
 lessons apply there (mid-US-day checks on 11/17 and 11/18 EST).
 
