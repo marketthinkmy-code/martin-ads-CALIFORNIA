@@ -149,7 +149,9 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   21:13 MYT and the end of the US day) — add a mid-US-day check on the last two days.
 
 ### Approved for the next rotations (operator 2026-11-12: "下一场直播就执行所有你发现的和建议的")
-Next West (live US Wed 2026-12-02 = MYT Thu 12/3 12:00; switch-on date to confirm with the operator):
+Next West (live US Wed 2026-12-02 = MYT Thu 12/3 12:00; switch-on MYT Thu 2026-11-26 — operator
+chose option A on 2026-11-12: a full 7 days, accepting Thanksgiving / Black Friday / Cyber Monday
+CPMs; watch spend closely 11/26–11/30):
 - City level is the core; F&R is the lead audience. State level keeps only Broad + Parents as
   the control — no 州级 F&R.
 - Videos: keep old V4 + V1 and new Video 8; retest new Video 2 / 5 / 7; drop V10, old V2
