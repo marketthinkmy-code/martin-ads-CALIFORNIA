@@ -3,6 +3,27 @@
 Source plan: Google Doc "US 2days funnel" (北美华人孩子长高突围营). Earlier East+Midwest
 history: docs/handoff/east-midwest-session.md. Where they conflict, this file wins.
 
+## Live schedule (operator, 2026-11-12) — Wednesdays 8–10 PM local, West / East alternating
+| # | US date | MYT | Side | Owner |
+|---|---|---|---|---|
+| 1 | 2026-11-11 | 11/12 12:00 | West | Qing |
+| 2 | 2026-11-18 | 11/19 09:00 | East | Shirley |
+| 3 | 2026-12-02 | 12/3 12:00 | West | Qing |
+| 4 | 2026-12-09 | 12/10 09:00 | East | Shirley |
+| 5 | 2026-12-16 | 12/17 12:00 | West | Qing |
+| 6 | 2026-12-23 | 12/24 09:00 | East | Shirley |
+| 7 | 2027-01-06 | 1/7 12:00 | West | Qing |
+| 8 | 2027-01-13 | 1/14 09:00 | East | Shirley |
+| 9 | 2027-01-20 | 1/21 12:00 | West | Qing |
+| 10 | 2027-02-03 | 2/4 09:00 | East | Shirley |
+| 11 | 2027-02-10 | 2/11 12:00 | West | Qing |
+| 12 | 2027-02-17 | 2/18 09:00 | East | Shirley |
+| 13 | 2027-02-24 | 2/25 12:00 | West | Qing |
+No live on 11/25 (Thanksgiving), 12/30 or 1/27 — those weeks have no side to promote, so the
+"switch sides every Thursday" rule pauses; confirm each switch-on date with the operator.
+Holiday weeks (Thanksgiving 11/26, Christmas Eve 12/24, New Year's Eve 12/31) need extra care
+with attendance and ad costs.
+
 ## Rotation
 - Free live session every **US Wednesday 8:00 PM local**, West and East+Midwest alternating.
 - Only one side runs ads at a time. Operator turns the running side OFF on **Malaysia
@@ -128,7 +149,7 @@ During a one-week test CPA can't be judged, so in-week decisions are CPL-based:
   21:13 MYT and the end of the US day) — add a mid-US-day check on the last two days.
 
 ### Approved for the next rotations (operator 2026-11-12: "下一场直播就执行所有你发现的和建议的")
-Next West (live US Wed 2026-11-25, switch-on MYT Thu 2026-11-19 after the East+Midwest live):
+Next West (live US Wed 2026-12-02 = MYT Thu 12/3 12:00; switch-on date to confirm with the operator):
 - City level is the core; F&R is the lead audience. State level keeps only Broad + Parents as
   the control — no 州级 F&R.
 - Videos: keep old V4 + V1 and new Video 8; retest new Video 2 / 5 / 7; drop V10, old V2
