@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       side:
-        description: em (East+Midwest city F&R), em_broad (East+Midwest Broad A+) or west
+        description: em (East+Midwest city F&R), em_broad (East+Midwest Broad A+), em_broad_newma (5 新馬 videos into Broad A+) or west
         default: em
 
 concurrency:

@@ -29,7 +29,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import build_em_ab_nov as em  # noqa: E402
 import build_west_ab_nov as west  # noqa: E402
 from build_west_ab_nov import throttle_tolerant  # noqa: E402
-from new8_copy import VIDEOS  # noqa: E402
+import importlib  # noqa: E402
 
 from adbot.commands import drive_client, graph_client  # noqa: E402
 from adbot.settings import load_settings  # noqa: E402
@@ -54,14 +54,21 @@ SIDES = {
                      reuse={1: "1479182944187498", 2: "1452701453491488", 3: "1004970651935400",
                             4: "2624501621402291", 5: "2636186750226231", 6: "2327068894794353",
                             7: "1128268050183585", 8: "2368479050560610"}),
+    # operator 2026-11-13: 5 新馬 Sep videos (H1, V7–V10) go into the same Broad A+ campaign
+    # for this East+Midwest week, one ad set each at RM35/day (the burst-safe budget), built
+    # PAUSED; copy = the 新馬 copy adapted to 繁體 / US wording (scripts/newma5_copy.py).
+    "em_broad_newma": dict(mod=em, campaign="US East+Midwest | Broad A+ | 新影片 V1–V8",
+                           template=None, prefix="Broad A+ | 7州+Ontario | 新馬 ", reuse={},
+                           copy="newma5_copy", daily=3500),
 }
 SIDE = SIDES[os.environ.get("SIDE", "em").strip() or "em"]
+VIDEOS = importlib.import_module(SIDE.get("copy", "new8_copy")).VIDEOS
 M = SIDE["mod"]
 ACCT = M.ACCT
 CAMPAIGN = SIDE["campaign"]
 TEMPLATE_CAMPAIGN = SIDE["template"]
 ADSET_PREFIX = SIDE["prefix"]
-DAILY = 5000                                  # RM50.00 per ad set
+DAILY = SIDE.get("daily", 5000)               # minor units: 5000 = RM50.00 per ad set
 READ_ONLY_TARGETING = {"targeting_relaxation_types"}
 
 
@@ -162,7 +169,7 @@ def main() -> None:
     have_as = {r["name"]: r["id"] for r in g._get_all(f"{cid}/adsets", {"fields": "id,name"})}
     n_ads = 0
     for v in VIDEOS:
-        asname = f"{ADSET_PREFIX}V{v['n']}"
+        asname = f"{ADSET_PREFIX}{v.get('tag', 'V' + str(v['n']))}"
         existed = asname in have_as
         asid = have_as.get(asname) or g.create_adset(
             ACCT, campaign_id=cid, name=asname, daily_budget=DAILY,
