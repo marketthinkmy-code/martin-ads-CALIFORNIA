@@ -183,6 +183,16 @@ lessons apply there.
 - 11/13: 4 more reserve ad sets showed late registrations (城市级 Broad V3, 城市级 F&R V3, 城市级
   F&R 新V8, 城市级 Parents V1). Operator: reopen them at RM50 only after EST day 1 is over
   (「等 day 1 过完再开」 — day 1 had already spent its budget) → MYT 11/13 13:13.
+- 11/13 ~10:15 MYT, operator decision (goal: control spend and CPL): day 1 = RM1,920 / 11
+  registrations (CPL ~RM175); the 24 zero-registration reserve ad sets had spent RM1,221 with 0
+  registrations, the 10 with registrations CPL ~RM60–66. → CANCEL the 11/14 reserve reopen; run
+  only the 10 ad sets with registrations (RM50 each) to the live; pause line stays RM100 (RM85
+  tightening not taken). Safety valve, ask first: if < 4 running ad sets and < 3 registrations
+  a day by ~11/16, propose reopening the 2–3 reserve ad sets with the most landing page views at
+  RM35.
+- Lesson: on a 34-ad-set launch, most of the first-morning money went to ad sets that never
+  converted; next time launch fewer ad sets (proven cells: 城市级, Broad A+, 新V8, V3) and cut
+  zero-registration ad sets early.
 - Lesson for future switch-ons: start new ad sets at a lower budget (~RM35) and let Meta
   pace; a fresh launch burns its first day's budget in the first US morning hours.
 
