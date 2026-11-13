@@ -180,6 +180,9 @@ lessons apply there.
 - Correction ~22:20 MYT: Broad A+ 新V5 had a registration attributed after the read, so it was
   paused by mistake; reopened. The operator put these 6 ad sets back to RM50/day; the 28
   reserve ad sets stay at RM35. Late attribution: re-read registrations right before pausing.
+- 11/13: 4 more reserve ad sets showed late registrations (城市级 Broad V3, 城市级 F&R V3, 城市级
+  F&R 新V8, 城市级 Parents V1). Operator: reopen them at RM50 only after EST day 1 is over
+  (「等 day 1 过完再开」 — day 1 had already spent its budget) → MYT 11/13 13:13.
 - Lesson for future switch-ons: start new ad sets at a lower budget (~RM35) and let Meta
   pace; a fresh launch burns its first day's budget in the first US morning hours.
 
