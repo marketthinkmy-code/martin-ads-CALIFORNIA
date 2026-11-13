@@ -193,6 +193,13 @@ lessons apply there.
 - 11/13 ~13:30 MYT: Broad A+ 新V8 reached 3 registrations at CPL ~RM24 → operator approved +20%
   now (RM50 → RM60), at the start of EST day 2. Rule of thumb from here: a running ad set with
   ≥ 3 registrations at CPL ≤ RM85 can get +20% mid-week, operator approves first.
+- 11/13 afternoon (operator): reserves are not dead after ~3 burst hours — judge on link CTR /
+  cost per landing page view. Reopened the 8 with the best leading signals at RM35 (MYT 11/13
+  19:00); 4 middle kept as backup, 12 weak stay off.
+- 11/13: 5 新馬 Sep videos (H1 吃完就上廁所, V7 14歲, V8 鼻塞, V9 鼻子不通, V10 吸收不到) built
+  PAUSED in the EM Broad A+ campaign, RM35 each, ad names prefixed 「新馬」; copy = operator's
+  新馬 copy adapted to US wording (scripts/newma5_copy.py, 「MC」→「月經」 — V7's audio still
+  says MC). Switch-on MYT Sat 11/14 19:00 after the operator sets Strategy type + WhatsApp.
 - Lesson: on a 34-ad-set launch, most of the first-morning money went to ad sets that never
   converted; next time launch fewer ad sets (proven cells: 城市级, Broad A+, 新V8, V3) and cut
   zero-registration ad sets early.
