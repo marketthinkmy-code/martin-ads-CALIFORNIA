@@ -190,6 +190,9 @@ lessons apply there.
   tightening not taken). Safety valve, ask first: if < 4 running ad sets and < 3 registrations
   a day by ~11/16, propose reopening the 2–3 reserve ad sets with the most landing page views at
   RM35.
+- 11/13 ~13:30 MYT: Broad A+ 新V8 reached 3 registrations at CPL ~RM24 → operator approved +20%
+  now (RM50 → RM60), at the start of EST day 2. Rule of thumb from here: a running ad set with
+  ≥ 3 registrations at CPL ≤ RM85 can get +20% mid-week, operator approves first.
 - Lesson: on a 34-ad-set launch, most of the first-morning money went to ad sets that never
   converted; next time launch fewer ad sets (proven cells: 城市级, Broad A+, 新V8, V3) and cut
   zero-registration ad sets early.
