@@ -200,6 +200,13 @@ lessons apply there.
   PAUSED in the EM Broad A+ campaign, RM35 each, ad names prefixed 「新馬」; copy = operator's
   新馬 copy adapted to US wording (scripts/newma5_copy.py, 「MC」→「月經」 — V7's audio still
   says MC). Switch-on MYT Sat 11/14 19:00 after the operator sets Strategy type + WhatsApp.
+- 11/14: rule pauses 城F 新V2 (RM100.10, 0 reg), A+ 新V7 (RM110, 0), A+ 新V4 (RM106, 0).
+  City F&R 新V8 reopened at RM50 after a late 2nd registration.
+- 11/15 (operator 「都要」, applied 01:49 EST = start of the EST day): +20% for A+ 新V6
+  RM35→42 (4 reg, CPL ~30) and A+ 新V5 RM50→60 (3 reg, CPL ~58); 新馬 V10 paused early on
+  leading signals (RM66.73, 0 reg, link CTR 1.04%, ~RM33 per landing page view vs RM4–7 for
+  the rest). Days so far: 11/12 RM1,947 / 12 reg, 11/13 RM1,098 / 13, 11/14 ~RM503+ / 6+.
+  Best cells: Broad A+ × 新V6 / 新V8; Parents and 州级 clearly weakest.
 - Lesson: on a 34-ad-set launch, most of the first-morning money went to ad sets that never
   converted; next time launch fewer ad sets (proven cells: 城市级, Broad A+, 新V8, V3) and cut
   zero-registration ad sets early.
