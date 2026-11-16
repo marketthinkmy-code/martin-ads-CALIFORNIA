@@ -217,6 +217,11 @@ lessons apply there.
   (RM179 / 2, CPL 90) before they crossed the line. 11/15 was the best day (RM558 / 10 reg,
   CPL ~56). Week to date RM4,160 / 41 reg. Running: A+ 新V8 / 新V6 / 新V5, 城F 新V8, 新馬 H1 /
   V7 ≈ RM299/day.
+- 11/16 13:02 MYT (start of EST 11/16): +20% applied — 新馬 V7 RM35→42 (RM120 / 4 reg, CPL 30),
+  城F 新V8 RM50→60 (RM221 / 4 reg, CPL 55). Running total ≈ RM306/day.
+- Bullets verdict (11/16): of the 8 promising reserves reopened 11/13 only A+ 新V6 became a winner
+  (CPL ~35); the other 7 spent ~RM906 for 5 reg (CPL ~181). The 5 新馬 new videos did better: 2 winners
+  (V7, H1), RM502 / 8 reg overall. Next rotation: fresh creatives beat reopening old reserves.
 - Lesson: ad sets with 1–2 registrations sitting near CPL 90–100 rarely recover in time; the
   operator prefers to cut them early and keep budget on the ≥4-registration winners.
 - Lesson: on a 34-ad-set launch, most of the first-morning money went to ad sets that never
