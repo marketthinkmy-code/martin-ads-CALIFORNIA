@@ -207,6 +207,18 @@ lessons apply there.
   leading signals (RM66.73, 0 reg, link CTR 1.04%, ~RM33 per landing page view vs RM4–7 for
   the rest). Days so far: 11/12 RM1,947 / 12 reg, 11/13 RM1,098 / 13, 11/14 ~RM503+ / 6+.
   Best cells: Broad A+ × 新V6 / 新V8; Parents and 州级 clearly weakest.
+- 11/15 19:13 MYT: rule pause 城F 新V6 (RM204.54 / 2 reg, CPL 102). Operator approved +20% for
+  新馬 V7 (RM35→42, 3→4 reg, CPL ~29) and 城F 新V8 (RM50→60, 4 reg, CPL ~53), applied by a
+  one-off task at MYT 11/16 13:02 (start of EST 11/16).
+- 11/16 09:51 MYT: rule pauses 新馬 V9 (RM110.55 / 1, CPL 111), 新馬 V8 (RM105.34 / 1, CPL 105),
+  城F V3 (RM209.13 / 2, CPL 105). Operator 「那些差不多到线的，帮我密切留意」 → extra near-line
+  checks at MYT 21:43 / 01:43 / 04:43 / 06:43 / 08:43 until the live.
+- 11/16 10:30 MYT, operator 「可以先关」: paused 州B V1 (RM197 / 2, CPL 98.5) and 城F 新V7
+  (RM179 / 2, CPL 90) before they crossed the line. 11/15 was the best day (RM558 / 10 reg,
+  CPL ~56). Week to date RM4,160 / 41 reg. Running: A+ 新V8 / 新V6 / 新V5, 城F 新V8, 新馬 H1 /
+  V7 ≈ RM299/day.
+- Lesson: ad sets with 1–2 registrations sitting near CPL 90–100 rarely recover in time; the
+  operator prefers to cut them early and keep budget on the ≥4-registration winners.
 - Lesson: on a 34-ad-set launch, most of the first-morning money went to ad sets that never
   converted; next time launch fewer ad sets (proven cells: 城市级, Broad A+, 新V8, V3) and cut
   zero-registration ad sets early.
