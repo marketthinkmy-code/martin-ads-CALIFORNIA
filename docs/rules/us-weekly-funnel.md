@@ -219,6 +219,9 @@ lessons apply there.
   V7 ≈ RM299/day.
 - 11/16 13:02 MYT (start of EST 11/16): +20% applied — 新馬 V7 RM35→42 (RM120 / 4 reg, CPL 30),
   城F 新V8 RM50→60 (RM221 / 4 reg, CPL 55). Running total ≈ RM299/day (6 ad sets).
+- 11/17 13:02 MYT (start of EST 11/17): second +20% on 新馬 V7 RM42→50 (RM176 / 6 reg, CPL ~29,
+  link CTR steady ~3.5–4%). Running total ≈ RM307/day. A+ 新V6 / 新V8 / 城F 新V8 not raised again —
+  Meta trend showed their CTR falling (early fatigue).
 - Bullets verdict (11/16): of the 8 promising reserves reopened 11/13 only A+ 新V6 became a winner
   (CPL ~35); the other 7 spent ~RM906 for 5 reg (CPL ~181). The 5 新馬 new videos did better: 2 winners
   (V7, H1), RM502 / 8 reg overall. Next rotation: fresh creatives beat reopening old reserves.
