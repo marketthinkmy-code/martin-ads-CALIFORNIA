@@ -232,6 +232,27 @@ lessons apply there.
   zero-registration ad sets early.
 - Lesson for future switch-ons: start new ad sets at a lower budget (~RM35) and let Meta
   pace; a fresh launch burns its first day's budget in the first US morning hours.
+- 11/18 13:00 MYT (start of the EST live day, operator 「帮我安排加预算」 / 「加预算 可以」): +20% on the
+  5 qualifying ad sets — 新馬 V7 RM50→60, A+ 新V5 / A+ 新V8 / 城F 新V8 RM60→72, A+ 新V6 RM42→50
+  (≈ RM361/day). 11/18 23:50 MYT operator 「H1 可以先关」: 新馬 H1 paused at RM194.97 / 2 (CPL 97.5).
+- Pause time (operator 11/18: 「至少直播开始前 3 个小时」): all EM ad sets paused MYT 11/19 06:00
+  (5 PM EST), re-checked 06:05 — all 39 PAUSED.
+- Live day (EST 11/18) was weak: RM268 / 1 registration (0 until the evening) despite the +20% —
+  next time don't raise budgets on the live day; consider pausing at the end of the day before
+  the live, or cutting budgets on live day.
+- Time zone: Meta's "today" for this account is the EST day = MYT 13:00 → 13:00 next day; the
+  operator's list counts MYT days, so the two never match day by day.
+- EM week final (11/12–11/18 EST): RM5,226.01 / 55 reg, CPL ≈ 95. Day 1 RM1,947 / 12 (CPL 162);
+  days 4–6 CPL 56–68. Final 6 running ad sets: RM2,178 / 39 (CPL ≈ 56).
+  - State vs city (different geo AND Advantage+, not a pure geo test): A+ campaign (state geo +
+    Advantage+) RM2,348 / 34 (CPL 69); city 新影片 F&R RM1,186 / 12 (99); old city 3 RM949 / 6 (158);
+    old state 3 RM743 / 3 (248).
+  - Audiences: A+ Broad 69 ≫ F&R 118 > old Broad 161 > Parents 232.
+  - Videos: 新V5 RM581 / 11 (53), 新V8 RM929 / 16 (58), 新V6 RM511 / 7 (73), 新馬 V7 RM274 / 6 (46);
+    新V7 145; 新V1–V4 RM464 / 0; old V1 164, V3 155, V4 417; 新馬 H1 98, V8–V10 weak.
+  - Meta: A+ 新V5 and 新V8 overlap in auctions (merge next time); CTR falling on all running
+    videos → new creatives needed.
+  - CPA verdict for this week from the paid list after ~12/2 (14 days after the live, ≥ RM1,000).
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
