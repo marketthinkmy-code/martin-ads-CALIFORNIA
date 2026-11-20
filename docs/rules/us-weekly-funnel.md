@@ -303,3 +303,15 @@ rate-limited).
 - Paid students: sheet tab `🇺🇸 Paid Student List ($799)`, matched by UTM ad name. Operator
   confirmed it is current as of 2026-11-04 (latest sale 2026-10-09).
 - Rankings: `adbot-us-top-ads` workflow (merges name variants, excludes Canada).
+- 2026-11-20 check (operator confirmed the only real new sale is the one below; blank 11/19 /
+  11/26 rows in the tab are placeholders): EM 11/12–11/18 week = 0 sales from its 53 new
+  registrants so far; the 11/19 live sold 1 (USD 997) to an Aug lead (美東美中 webinar_aug28,
+  Food & Drink interest, MAR Video 5 林書豪 story, child 13–15). West 11/12 week: 1 sale (城市级
+  Broad, old V1) on RM6,779. Final CPA verdicts still at 11/26 (West) / 12/2 (EM).
+- Lead quality (23 US buyers matched to the 🇺🇸 Register quiz): every buyer's child is 10+
+  (10–12: 8, 13–15: 10, 16+: 5); 157 registrants with a child aged 3–9 → 0 buyers. Conversion:
+  10–12 ≈ 4.2%, 13–15 ≈ 3.7%, 16+ ≈ 3.1%. The EM week had 19/53 (36%) under-10 registrants vs
+  ~20% historically (新V5 4/9, 城F 新V8 4/7; 新馬 V7 only 1/6); West 11/12 week ~19/37.
+  → Judge ads on cost per 10+ registration, not raw CPL (EM week ≈ RM154 vs raw RM95). At ~3.7%
+  conversion the RM1,000 CPA target needs ~RM37 per 10+ registration. Next rotation: creatives and
+  copy aimed at 10–15 / puberty, and retest MAR Video 5 林書豪 story.
