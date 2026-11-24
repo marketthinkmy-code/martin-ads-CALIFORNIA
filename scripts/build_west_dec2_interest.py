@@ -5,7 +5,10 @@ The West best seller (old V1 华人孩子在美国很难长高（双语）, ~20 
 interest ad sets — the interests behind most historic West sales (F&R 10, Fast Food 9,
 Food & Drink + Milk 5, Cartoon 4, Business & Industry 4). Same video everywhere so only the
 audience differs. Interests are cloned from the historic "CALIFORNIA - … - Dec 5" ad sets.
-  * into the existing conversion campaign 120249369724880259 (its RM4,000 spend_cap covers all)
+  * operator 2026-11-24 (second instruction): NOT inside the Broad A+ campaign — own campaign
+    "US West | 州级 | 兴趣 × V1 | 12/2 live"; the 5 copies first built in the Broad A+ campaign
+    are deleted. The RM4,000 conversion budget is split by spend_cap: Broad A+ RM2,000 +
+    interest RM2,000 (each needs ~RM1,600 at RM250/day for 6.5 days).
   * whole CA + WA, Chinese locales, registrants / paid lists excluded, age 35–65,
     Advantage+ audience OFF (operator's choice), RM50/day each, end_time 12/3 09:00 +0800
   * reuses the V1 creative already in the campaign; built PAUSED. Idempotent by name.
@@ -25,7 +28,12 @@ from adbot.commands import graph_client  # noqa: E402
 from adbot.settings import load_settings  # noqa: E402
 
 ACCT = west.ACCT
-CAMPAIGN_ID = "120249369724880259"
+BROAD_CAMPAIGN_ID = "120249369724880259"
+CAMPAIGN = "US West | 州级 | 兴趣 × V1 | 12/2 live"
+SPEND_CAP = 200000                     # RM2,000.00 for this campaign
+BROAD_SPEND_CAP = 200000               # Broad A+ campaign lowered from RM4,000 to RM2,000
+OLD_ADSETS = ["120249371141490259", "120249371142330259", "120249371142940259",
+              "120249371143710259", "120249371144580259"]   # first build, in the Broad A+ campaign
 V1_CREATIVE = "1474066187965527"
 V1_AD_NAME = "Video 1：华人孩子在美国很难长高（双语）"
 DAILY = 5000
@@ -53,6 +61,22 @@ def strip(flex):
 
 def main() -> None:
     g = throttle_tolerant(graph_client(load_settings()))
+    print("== delete the 5 interest ad sets from the Broad A+ campaign ==", flush=True)
+    for oid in OLD_ADSETS:
+        try:
+            g._request("POST", oid, data={"status": "DELETED"})
+            print(f"  deleted {oid}", flush=True)
+        except Exception as e:  # noqa: BLE001
+            print(f"  {oid}: {str(e)[:120]}", flush=True)
+        time.sleep(2)
+    g._request("POST", BROAD_CAMPAIGN_ID, data={"spend_cap": BROAD_SPEND_CAP})
+    print(f"  Broad A+ campaign spend_cap -> {BROAD_SPEND_CAP}", flush=True)
+    camps = {r["name"]: r["id"] for r in g._get_all(f"{ACCT}/campaigns", {"fields": "id,name", "limit": 200})}
+    CAMPAIGN_ID = camps.get(CAMPAIGN) or g.create_campaign(
+        ACCT, name=CAMPAIGN, objective="OUTCOME_SALES", buying_type="AUCTION",
+        status="PAUSED", special_ad_categories=[], spend_cap=SPEND_CAP,
+        is_adset_budget_sharing_enabled=False)["id"]
+    print(f"== campaign {CAMPAIGN_ID} {CAMPAIGN} ==", flush=True)
     have = {r["name"]: r["id"] for r in g._get_all(f"{CAMPAIGN_ID}/adsets", {"fields": "id,name"})}
     for label, src in SOURCES:
         name = f"{label} | 州级 CA+WA | V1"
@@ -78,6 +102,8 @@ def main() -> None:
         else:
             print(f"  {asid} {name} exists")
     print("== read-back ==")
+    for cid in (BROAD_CAMPAIGN_ID, CAMPAIGN_ID):
+        print("  campaign", g._request("GET", cid, params={"fields": "id,name,status,spend_cap"}))
     for a in g._get_all(f"{CAMPAIGN_ID}/adsets", {"fields": "id,name,status,daily_budget,end_time,targeting"}):
         t = a["targeting"]
         ads = g._get_all(f"{a['id']}/ads", {"fields": "id,name,status"})
