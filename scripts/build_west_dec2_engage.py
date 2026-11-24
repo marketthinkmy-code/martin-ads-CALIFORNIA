@@ -7,7 +7,8 @@ later DMs the webinar invite with a UTM-tagged /register link.
   * campaign spend_cap RM1,000 (operator: RM1,000 engagement for this live)
   * same targeting as the conversion campaign: whole CA + WA, Advantage+ ON, Chinese locales,
     registrants / paid lists excluded
-  * new ad posts from the Drive videos (the US IG copies have no keyword CTA)
+  * new ad posts from the Drive videos (copied into the SA-readable California creatives
+    folder 1lFIYt6Df9jdPu12lRn0R00ZKPMdnoT4z; the US IG copies have no keyword CTA)
 Built PAUSED. Idempotent by name.
 """
 from __future__ import annotations
@@ -33,7 +34,7 @@ PREFIX = "Engagement A+ | 州级 CA+WA | "
 TAGS = "\n\n#馬丁醫師 #孩子長高"
 
 VIDEOS = [
-    {"kw": "黑豆", "drive_id": "1n1-mTW7-vPIGzWMKx0LH3DLhhXap1apq",
+    {"kw": "黑豆", "drive_id": "1nQrQGYv1gcf-UeK7jGv0sulqWHjHf0D5",
      "file": "IP Video：冬天有一杯東西 .mp4", "ad_name": "IP Video：冬天有一杯東西",
      "body": """冬天，我最常叫家長給孩子準備的，是一杯東西。
 不是轉骨湯，也不是保健品，在家就能做。
@@ -43,7 +44,7 @@ VIDEOS = [
 
 我把這杯黑豆水的冬天喝法，整理成一張《黑豆水抹茶冬天喝法卡》。
 想要的爸媽，留言「黑豆」，我私訊送給你 👇""" + TAGS + " #冬天 #黑豆"},
-    {"kw": "脾胃", "drive_id": "1cQmsGCHoaQQ1tDgye0DVxiCon2c1qBAL",
+    {"kw": "脾胃", "drive_id": "18dKqX2rG0wlZoIVQgu3h_rUDTAsiBcsh",
      "file": "IP Video：冬天常逼孩子多喝水？.mp4", "ad_name": "IP Video：冬天常逼孩子多喝水？",
      "body": """冬天常逼孩子多喝水？先停。
 
@@ -55,7 +56,7 @@ VIDEOS = [
 
 我整理了《冬天顧脾胃的5道甘苦早餐》，不含麥、不含奶，前一晚準備好，早上輕鬆上桌。
 想要的爸媽，留言「脾胃」，我私訊給你 👇""" + TAGS + " #冬天 #脾胃"},
-    {"kw": "原因", "drive_id": "1dr56Q0pEUfHHR4G5WnE3nK5K0GQkcUxm",
+    {"kw": "原因", "drive_id": "1qR8DN2l44dsvWOhagYaY_buqWgsXQ2eN",
      "file": "IP Video：五個原因睡前喝牛奶長不高 .mp4", "ad_name": "IP Video：五個原因睡前喝牛奶長不高",
      "body": """睡前一杯牛奶，是很多爸媽每天都在做的事。
 但這杯牛奶，可能正在偷走孩子長高的機會。
@@ -63,7 +64,7 @@ VIDEOS = [
 除了睡前牛奶，孩子長不高還有哪些原因？
 我整理了《長不高的5個原因自我檢查表》，幾分鐘就能對照孩子現在的狀況。
 想要的爸媽，留言「原因」，我私訊給你 👇""" + TAGS + " #牛奶 #睡前"},
-    {"kw": "好眠", "drive_id": "1ientpJWaysuTtBRN9HX1O_ju8Ww0QRdD",
+    {"kw": "好眠", "drive_id": "1k9DWsVwXZzPz8SpNVwYnLibjAlFvky1F",
      "file": "IP Video：考試週怎麼長高？.mp4", "ad_name": "IP Video：考試週怎麼長高？",
      "body": """考試週，孩子讀到很晚，爸媽最擔心：睡少了，是不是就長不高？
 成績和身高，從來不是二選一。
