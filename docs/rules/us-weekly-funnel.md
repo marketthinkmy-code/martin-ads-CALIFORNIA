@@ -276,6 +276,15 @@ lessons apply there.
   rewritten copy (ads "…｜v2"); the first-copy ads 120249370279940259 / 120249370282710259 stay
   PAUSED. Videos copied into the SA-readable California creatives folder for the build.
   Switches on/off with the conversion campaign (11/26 22:00 → 12/3 09:00).
+- Winning ad × audiences (operator 2026-11-24: 「winning ads try different ad sets」, Advantage+ OFF):
+  5 more ad sets in the conversion campaign (same RM4,000 cap), each the V1 creative at RM50,
+  age 35–65, interests cloned from the historic "CALIFORNIA - … - Dec 5" ad sets — Family and
+  Relationships, Fast Food, Food and Drink + Milk, Cartoon, Business & Industry (West sales by
+  audience: F&R 10, Fast Food 9, Food & Drink 5, Cartoon 4, B&I 4, Parents 4, Broad/A+ 3 of 44).
+  Note: those historic ad sets ran with Advantage+ audience ON (age suggestion 35–55).
+  Conversion total RM500/day. Meta end_time 12/3 09:00 on all ad sets (start_time can't be moved
+  once an ad set exists). A teammate's Publish on 11/24 16:36 switched the conversion campaign
+  on early (RM12.95) — paused 17:09; keep campaigns OFF when publishing edits.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
