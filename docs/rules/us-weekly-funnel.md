@@ -254,6 +254,19 @@ lessons apply there.
     videos → new creatives needed.
   - CPA verdict for this week from the paid list after ~12/2 (14 days after the live, ≥ RM1,000).
 
+### West 12/2 live rotation (operator 2026-11-24: 「定 / 照建议 / RM50」)
+- Decision: 州级 is the geo from now on (whole CA + WA, cities included, no exclusion) with
+  Broad + Advantage+ audience ON. Reason: city CPL looked lower (177 vs 265) but ~60% of city
+  registrants had children under 10 (never buyers); per 10+ registrant state ≈ RM380 vs city
+  ≈ RM410; EM's state + A+ cell won; historic West sales came from whole-California campaigns.
+- Built PAUSED (adbot-build-west-dec2): campaign 120249369724880259 "US West | 州级 | Broad A+
+  | 12/2 live", spend_cap RM4,000 (operator: this live = RM4,000 conversion + RM1,000
+  engagement). 5 ad sets × RM50: V1 华人孩子（双语）(West best seller, ~20 of 44 West sales),
+  新V8, 新V5, 新V6, 新馬 V7 (new creative; first time in West). V1/新V5/新V6/新V8 reuse the
+  creatives of the West ads that ran them 11/4–11/12.
+- Schedule: ON MYT Thu 11/26 22:00 (06:00 PST); checks 05:13 / 10:13 / 21:13 MYT; pause MYT
+  12/3 09:00 (3 h before the 12:00 live), recheck 09:05; summary 12/3 10:13.
+
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
   Thursday morning (2026-11-04 decision).
