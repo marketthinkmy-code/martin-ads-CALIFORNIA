@@ -266,6 +266,16 @@ lessons apply there.
   creatives of the West ads that ran them 11/4–11/12.
 - Schedule: ON MYT Thu 11/26 22:00 (06:00 PST); checks 05:13 / 10:13 / 21:13 MYT; pause MYT
   12/3 09:00 (3 h before the 12:00 live), recheck 09:05; summary 12/3 10:13.
+- Engagement test (operator 2026-11-24, RM1,000): campaign 120249370209540259 "US West | 州级 |
+  Engagement | 12/2 live" (OUTCOME_ENGAGEMENT, POST_ENGAGEMENT, spend_cap RM1,000), same
+  targeting, 4 IP videos × RM38: 黑豆 (《黑豆水抹茶冬天喝法卡》), 脾胃 (《冬天顧脾胃的5道甘苦早餐》),
+  原因 (《長不高的5個原因自我檢查表》), 好眠 (《考試週好眠清單》); 量身高三大誤區 dropped. Viewer
+  comments the keyword → operator's ABC Sales AI (Page 1180683238455992 + IG martinyaoshi.us)
+  DMs the gift → 5 min later the webinar invite with /register?utm_source=ABC_AI&utm_medium=DM
+  &utm_campaign=US_West_Engagement_Dec2&utm_content=<keyword>. 黑豆 and 原因 run the operator's
+  rewritten copy (ads "…｜v2"); the first-copy ads 120249370279940259 / 120249370282710259 stay
+  PAUSED. Videos copied into the SA-readable California creatives folder for the build.
+  Switches on/off with the conversion campaign (11/26 22:00 → 12/3 09:00).
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
