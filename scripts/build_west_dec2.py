@@ -41,6 +41,11 @@ PLAN = [  # (ad set tag, ad name, copy source or None for reuse-only)
     ("新V6", N8[6]["ad_name"], N8[6]),
     ("新馬 V7", NM["V7"]["ad_name"], NM["V7"]),
 ]
+# Reuse the creative of the West ad that already ran this video (11/4–11/12), so the post,
+# copy and any Ads Manager edits carry over. 新馬 V7 never ran in West → new creative.
+SOURCE_ADSET = {"V1": "120249074470360259",      # Broad | 城市级 9 cities | V1 (the 11/12 sale)
+                "新V8": "120249156750840259", "新V5": "120249156742510259",
+                "新V6": "120249156745410259"}
 
 
 def targeting():
@@ -93,6 +98,12 @@ def main() -> None:
     have_cr = {n: i for n, i in existing(g, "adcreatives").items() if i not in west.STALE_CREATIVES}
     creative = {}
     for tag, ad_name, src in PLAN:
+        if tag in SOURCE_ADSET:
+            ads = g._get_all(f"{SOURCE_ADSET[tag]}/ads", {"fields": "id,name,creative{id,name}"})
+            if ads:
+                creative[tag] = ads[0]["creative"]["id"]
+                print(f"  {tag}: reusing creative {creative[tag]} of West ad {ads[0]['id']} ({ads[0]['name']})")
+                continue
         if ad_name in have_cr:
             creative[tag] = have_cr[ad_name]
             print(f"  {tag}: reusing West creative {creative[tag]} ({ad_name})")
