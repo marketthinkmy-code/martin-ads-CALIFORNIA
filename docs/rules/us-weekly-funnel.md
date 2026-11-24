@@ -276,8 +276,10 @@ lessons apply there.
   rewritten copy (ads "…｜v2"); the first-copy ads 120249370279940259 / 120249370282710259 stay
   PAUSED. Videos copied into the SA-readable California creatives folder for the build.
   Switches on/off with the conversion campaign (11/26 22:00 → 12/3 09:00).
-- Winning ad × audiences (operator 2026-11-24: 「winning ads try different ad sets」, Advantage+ OFF):
-  5 more ad sets in the conversion campaign (same RM4,000 cap), each the V1 creative at RM50,
+- Winning ad × audiences (operator 2026-11-24: 「winning ads try different ad sets」, Advantage+ OFF;
+  then 「新開一個 campaign，不要跟 broad A 參在一起」): own campaign 120249371380290259 "US West |
+  州级 | 兴趣 × V1 | 12/2 live" (spend_cap RM2,000; Broad A+ cap lowered to RM2,000 so the two
+  conversion campaigns together = RM4,000), 5 ad sets, each the V1 creative at RM50,
   age 35–65, interests cloned from the historic "CALIFORNIA - … - Dec 5" ad sets — Family and
   Relationships, Fast Food, Food and Drink + Milk, Cartoon, Business & Industry (West sales by
   audience: F&R 10, Fast Food 9, Food & Drink 5, Cartoon 4, B&I 4, Parents 4, Broad/A+ 3 of 44).
