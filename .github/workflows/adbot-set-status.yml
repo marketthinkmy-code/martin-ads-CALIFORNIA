@@ -14,6 +14,14 @@ on:
         description: "New daily budget in minor units (6500 = RM65); empty = unchanged"
         required: false
         default: ""
+      start_time:
+        description: "Ad set start time, ISO 8601 with offset (2026-11-26T22:00:00+0800); empty = unchanged"
+        required: false
+        default: ""
+      end_time:
+        description: "Ad set end time, ISO 8601 with offset; empty = unchanged"
+        required: false
+        default: ""
 
 jobs:
   set:
@@ -33,4 +41,6 @@ jobs:
           IDS: ${{ github.event.inputs.ids }}
           STATUS: ${{ github.event.inputs.status }}
           DAILY_BUDGET: ${{ github.event.inputs.daily_budget }}
+          START_TIME: ${{ github.event.inputs.start_time }}
+          END_TIME: ${{ github.event.inputs.end_time }}
         run: python -u scripts/set_status.py
