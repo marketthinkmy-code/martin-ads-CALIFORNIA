@@ -36,14 +36,20 @@ TAGS = "\n\n#馬丁醫師 #孩子長高"
 VIDEOS = [
     {"kw": "黑豆", "drive_id": "1nQrQGYv1gcf-UeK7jGv0sulqWHjHf0D5",
      "file": "IP Video：冬天有一杯東西 .mp4", "ad_name": "IP Video：冬天有一杯東西",
-     "body": """冬天，我最常叫家長給孩子準備的，是一杯東西。
-不是轉骨湯，也不是保健品，在家就能做。
+     "v2": True,   # operator rewrote the copy 2026-11-24 (verbatim below)
+     "body": """冬天有一杯東西，比轉骨湯還重要 🍵
+
+很多媽媽一到冬天，就幫孩子燉轉骨湯、買補品。
+但補品不是每個孩子都適合，
+沒有經過醫師或專業人員評估，不要自己給孩子吃。
 
 天氣一冷，孩子手腳冰、晚上睡不沉，
 吃進去的營養，很難真正用在長高上。
 
-我把這杯黑豆水的冬天喝法，整理成一張《黑豆水抹茶冬天喝法卡》。
-想要的爸媽，留言「黑豆」，我私訊送給你 👇""" + TAGS + " #冬天 #黑豆"},
+我把這杯的做法、份量和喝的時間，整理成一份小禮包。
+想要的爸媽，留言「黑豆」，我私訊送給你 👇
+
+#馬丁醫師 #孩子長高 #冬天 #黑豆"""},
     {"kw": "脾胃", "drive_id": "18dKqX2rG0wlZoIVQgu3h_rUDTAsiBcsh",
      "file": "IP Video：冬天常逼孩子多喝水？.mp4", "ad_name": "IP Video：冬天常逼孩子多喝水？",
      "body": """冬天常逼孩子多喝水？先停。
@@ -58,12 +64,14 @@ VIDEOS = [
 想要的爸媽，留言「脾胃」，我私訊給你 👇""" + TAGS + " #冬天 #脾胃"},
     {"kw": "原因", "drive_id": "1qR8DN2l44dsvWOhagYaY_buqWgsXQ2eN",
      "file": "IP Video：五個原因睡前喝牛奶長不高 .mp4", "ad_name": "IP Video：五個原因睡前喝牛奶長不高",
+     "v2": True,   # operator rewrote the copy 2026-11-24 (verbatim below)
      "body": """睡前一杯牛奶，是很多爸媽每天都在做的事。
 但這杯牛奶，可能正在偷走孩子長高的機會。
 
-除了睡前牛奶，孩子長不高還有哪些原因？
-我整理了《長不高的5個原因自我檢查表》，幾分鐘就能對照孩子現在的狀況。
-想要的爸媽，留言「原因」，我私訊給你 👇""" + TAGS + " #牛奶 #睡前"},
+另外，我整理了很多家長最想知道的《長不高的5個原因》變成一份檢查表。
+想要的爸媽，留言「原因」，我私訊給你 👇
+
+#馬丁醫師 #孩子長高 #牛奶 #睡前"""},
     {"kw": "好眠", "drive_id": "1k9DWsVwXZzPz8SpNVwYnLibjAlFvky1F",
      "file": "IP Video：考試週怎麼長高？.mp4", "ad_name": "IP Video：考試週怎麼長高？",
      "body": """考試週，孩子讀到很晚，爸媽最擔心：睡少了，是不是就長不高？
@@ -91,11 +99,14 @@ def main() -> None:
     have_cr = existing(g, "adcreatives")
     creative = {}
     for v in VIDEOS:
+        if v.get("v2"):
+            v["ad_name"] = v["ad_name"] + "｜v2"
+    for v in VIDEOS:
         if v["ad_name"] in have_cr:
             creative[v["kw"]] = have_cr[v["ad_name"]]
             print(f"  {v['kw']}: creative exists {creative[v['kw']]}")
             continue
-        vid = have_vid.get(v["ad_name"])
+        vid = have_vid.get(v["ad_name"].replace("｜v2", ""))
         if not vid:
             drive = drive_client(s)
             meta = drive._svc.files().get(fileId=v["drive_id"], fields="name",
@@ -104,7 +115,7 @@ def main() -> None:
                 raise SystemExit(f"{v['kw']}: Drive file is '{meta['name']}', expected '{v['file']}'")
             path = Path(f"/tmp/ip_{v['kw']}.mp4")
             drive.download_file(v["drive_id"], path)
-            vid = g.upload_video(ACCT, str(path), v["ad_name"])
+            vid = g.upload_video(ACCT, str(path), v["ad_name"].replace("｜v2", ""))
             path.unlink()
             print(f"  {v['kw']}: uploaded {meta['name']} -> video {vid}", flush=True)
             for _ in range(30):
