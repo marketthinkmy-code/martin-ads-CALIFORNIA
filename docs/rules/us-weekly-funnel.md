@@ -254,6 +254,18 @@ lessons apply there.
     videos → new creatives needed.
   - CPA verdict for this week from the paid list after ~12/2 (14 days after the live, ≥ RM1,000).
 
+### West 11/4–11/12 CPA verdict (2026-11-26, 14 days after the 11/11 live)
+- 1 paid student (USD 997) from the week: 城市级 Broad V1 (old V1 华人孩子（双语）), on RM6,779 total
+  spend → account CPA ≈ RM6,779 (target RM1,000; > RM2,200 with real sales = pause level).
+- By campaign: 城市级 Broad RM854 / 1 sale (CPA ≈ RM854, but < RM1,000 spend → not judgeable);
+  城市级 F&R RM1,474 / 0 (best CPL cell, no sale); 州级 Parents RM996 / 0; 州级 Broad RM991 / 0;
+  城市级 Parents RM853 / 0; new-video F&R RM956 / 0; 州级 F&R RM659 / 0.
+- By video: old V1 RM1,400 / 1 (≈ RM1,400); V4 RM1,521 / 0; V3 RM1,121 / 0; V2 RM990 / 0; V10 RM793 / 0;
+  new videos RM956 / 0.
+- For the 12/2 rotation: V1 stays the anchor (already in Broad A+ and all 5 interest ad sets);
+  V2/V3/V4/V10 stay out; low CPL (city F&R) did not turn into sales — judge on 10+ registrants
+  and sales, not CPL alone. One sale is a thin sample.
+
 ### West 12/2 live rotation (operator 2026-11-24: 「定 / 照建议 / RM50」)
 - Decision: 州级 is the geo from now on (whole CA + WA, cities included, no exclusion) with
   Broad + Advantage+ audience ON. Reason: city CPL looked lower (177 vs 265) but ~60% of city
