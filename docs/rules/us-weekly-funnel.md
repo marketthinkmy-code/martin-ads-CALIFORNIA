@@ -312,6 +312,16 @@ lessons apply there.
   B&I 102.45/1). Lesson: V1 × interests with Advantage+ OFF did not register this week (V1 also
   0 in Broad A+). Same time, +20% early (operator-approved, below the ≥3-reg threshold): 新V5 /
   新V6 / 新馬 V7 RM50 → RM60 (2 reg each, CPL ≈ 46–53). 新V8 stays RM50.
+- 11/27 ~10:20 新V8 paused on operator's word (「V8 也一起关掉吧」, RM86.59 / 0). Broad A+ now runs
+  only 新V5 / 新V6 / 新馬 V7.
+- CBO 1-1-3 test (operator 2026-11-27: 「A but CBO 1-1-3 … CBO RM100 per day」), built by
+  scripts/build_west_dec2_cbo.py — one campaign per audience, campaign budget RM100/day, 1 ad set
+  (CA+WA, Chinese, age 35–65, Advantage+ audience OFF, FB/IG/WhatsApp/Threads — no Audience
+  Network, end 12/3 09:00) × 3 ads 新V5 / 新V6 / 新馬 V7 (existing creatives):
+  Parents 3-17 + Engaged 120249414090430259, Family and Relationships 120249414092010259,
+  Food and Drink + Milk 120249414094180259. Built with spend_cap RM500 each; operator removed the
+  caps (「不要上限」) and switched all three on by hand MYT 11/27 ~11:20. Pause rule per campaign
+  (= its single ad set); never pause single ads inside a CBO ad set.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
