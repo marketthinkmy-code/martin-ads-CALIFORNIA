@@ -299,6 +299,10 @@ lessons apply there.
   Conversion total RM500/day. Meta end_time 12/3 09:00 on all ad sets (start_time can't be moved
   once an ad set exists). A teammate's Publish on 11/24 16:36 switched the conversion campaign
   on early (RM12.95) — paused 17:09; keep campaigns OFF when publishing edits.
+- Switched on MYT 11/26 22:00 (31 ids ACTIVE, read back). First 7 h = US Thanksgiving: conversion
+  CPM ≈ RM400 vs RM244 in West 11/4–11/12; RM777.51 / 5 registrations (CPL ≈ 155; previous West
+  week CPL ≈ 200). Operator 2026-11-27: 「照原规则执行」 — holiday CPM does not loosen the RM100
+  pause rule.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
