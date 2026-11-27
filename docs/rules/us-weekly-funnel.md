@@ -303,6 +303,10 @@ lessons apply there.
   CPM ≈ RM400 vs RM244 in West 11/4–11/12; RM777.51 / 5 registrations (CPL ≈ 155; previous West
   week CPL ≈ 200). Operator 2026-11-27: 「照原规则执行」 — holiday CPM does not loosen the RM100
   pause rule.
+- 11/27 10:04 paused by rule: Broad A+ V1 (RM110.70 / 0 reg), Business & Industry (RM102.45 / 1 reg).
+  Engagement had RM130 / 0 comments after 12 h → operator 2026-11-27: 「花到 RM60 还 0 留言就停」
+  (each engagement ad set: spend ≥ RM60 and 0 comments = pause). Freed conversion money is not
+  re-spent unless the operator approves.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
