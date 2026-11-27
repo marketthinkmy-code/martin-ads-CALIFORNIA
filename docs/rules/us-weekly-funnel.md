@@ -322,6 +322,14 @@ lessons apply there.
   Food and Drink + Milk 120249414094180259. Built with spend_cap RM500 each; operator removed the
   caps (「不要上限」) and switched all three on by hand MYT 11/27 ~11:20. Pause rule per campaign
   (= its single ad set); never pause single ads inside a CBO ad set.
+- 11/27 14:22 a teammate re-activated interest × V1 campaign + Business & Industry in Power Editor
+  (it then reached RM114.74 / 2 reg, CPL ≈ 57 — kept under the normal pause rule). Lesson again:
+  status changes outside the bot must be told to the operator; monitoring now checks the activity log.
+- 11/27 21:13 engagement campaign paused by rule: 黑豆 67.11 / 脾胃 63.54 / 原因 63.87 / 好眠 61.41,
+  0 comments each (RM256). Keyword-comment ads with no CTA did not get a single comment in 47 h.
+- 11/27 21:13 lead quality (Register sheet, label "US 马丁药师 webinar_dec3"): 9 registrants, 4 with a
+  child 10+ — 新V6 2/2, 新馬 V7 1/2, B&I 1/2, 新V5 0/3 (all under 10). CBO 1-1-3: Meta puts most spend
+  on 新馬 V7 (Parents 77%, F&R 64%); Food & Drink favours 新V6 (53%).
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
