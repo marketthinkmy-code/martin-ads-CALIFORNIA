@@ -334,6 +334,11 @@ lessons apply there.
   re-activation accepted) and 新V5 stays on despite 0/3 registrants with a child 10+. Projected
   conversion spend ≈ RM4,200 (≈ RM200 over RM4,000) accepted. Do not re-propose these two pauses;
   only the CPL rule applies to them.
+- 11/28 05:13 all three CBO 1-1-3 campaigns paused by rule after ~18 h (US Black Friday daytime):
+  Parents 3-17 + Engaged RM106.95 / 0, Family and Relationships RM102.20 / 0, Food and Drink + Milk
+  RM109.00 / 0 (RM318, 28 landing-page views, 0 registrations). Same videos kept registering in
+  Broad A+ (Advantage+ audience ON) — this week, narrowing the audience with interests lost twice
+  (V1 × 5 interests, then V5/V6/V7 × 3 audiences).
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
