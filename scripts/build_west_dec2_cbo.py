@@ -14,6 +14,7 @@ CBO RM100 per day」.
 """
 from __future__ import annotations
 
+import json
 import sys
 import time
 from pathlib import Path
@@ -70,7 +71,9 @@ def main() -> None:
         tgt = {"geo_locations": {"regions": west.RESOLVED_STATES, "location_types": ["home", "recent"]},
                "locales": [20, 21, 22], "excluded_custom_audiences": west.EXCLUDE,
                "age_min": 35, "age_max": 65, "targeting_automation": {"advantage_audience": 0},
-               "flexible_spec": flex}
+               "flexible_spec": flex,
+               # same platforms Broad A+ delivers on — no Audience Network
+               "publisher_platforms": ["facebook", "instagram", "whatsapp", "threads"]}
         aname = f"{label} | 州级 CA+WA | V5+V6+V7"
         have = {r["name"]: r["id"] for r in g._get_all(f"{cid}/adsets", {"fields": "id,name"})}
         asid = have.get(aname) or g.create_adset(
@@ -78,6 +81,9 @@ def main() -> None:
             optimization_goal="OFFSITE_CONVERSIONS", billing_event="IMPRESSIONS",
             promoted_object={"pixel_id": west.PIXEL_ID, "custom_event_type": "COMPLETE_REGISTRATION"},
             targeting=tgt, status="PAUSED")["id"]
+        if aname in have:
+            g._request("POST", asid, data={"targeting": json.dumps(tgt)})
+            print(f"  ad set {asid} targeting updated (no Audience Network)", flush=True)
         print(f"  ad set {asid} {aname} ({n} targeting items from {src})", flush=True)
         time.sleep(3)
         have_ads = {r["name"] for r in g._get_all(f"{asid}/ads", {"fields": "id,name"})}
@@ -99,7 +105,7 @@ def main() -> None:
             ads = g._get_all(f"{a['id']}/ads", {"fields": "id,name,status"})
             print(f"    {a['id']} {a['name']} [{a['status']} end {a.get('end_time')}] "
                   f"adv {t.get('targeting_automation')} age {t.get('age_min')}-{t.get('age_max')} "
-                  f"flex {len(t.get('flexible_spec') or [])} ads {[(x['id'], x['name'], x['status']) for x in ads]}")
+                  f"flex {len(t.get('flexible_spec') or [])} platforms {t.get('publisher_platforms')} ads {[(x['id'], x['name'], x['status']) for x in ads]}")
     print("DONE")
 
 
