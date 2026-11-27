@@ -330,6 +330,10 @@ lessons apply there.
 - 11/27 21:13 lead quality (Register sheet, label "US 马丁药师 webinar_dec3"): 9 registrants, 4 with a
   child 10+ — 新V6 2/2, 新馬 V7 1/2, B&I 1/2, 新V5 0/3 (all under 10). CBO 1-1-3: Meta puts most spend
   on 新馬 V7 (Parents 77%, F&R 64%); Food & Drink favours 新V6 (53%).
+- Operator 2026-11-27 (after the 21:13 report): 「不关」 — Business & Industry stays on (teammate's
+  re-activation accepted) and 新V5 stays on despite 0/3 registrants with a child 10+. Projected
+  conversion spend ≈ RM4,200 (≈ RM200 over RM4,000) accepted. Do not re-propose these two pauses;
+  only the CPL rule applies to them.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
