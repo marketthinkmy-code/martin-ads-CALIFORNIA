@@ -307,6 +307,11 @@ lessons apply there.
   Engagement had RM130 / 0 comments after 12 h → operator 2026-11-27: 「花到 RM60 还 0 留言就停」
   (each engagement ad set: spend ≥ RM60 and 0 comments = pause). Freed conversion money is not
   re-spent unless the operator approves.
+- 11/27 10:15 operator 「直接现在做吧」: whole interest × V1 campaign PAUSED (5 ad sets, ~RM472,
+  1 registration — F&R 99.77/0, Fast Food 95.03/0, Food & Drink 82.57/0, Cartoon 91.67/0,
+  B&I 102.45/1). Lesson: V1 × interests with Advantage+ OFF did not register this week (V1 also
+  0 in Broad A+). Same time, +20% early (operator-approved, below the ≥3-reg threshold): 新V5 /
+  新V6 / 新馬 V7 RM50 → RM60 (2 reg each, CPL ≈ 46–53). 新V8 stays RM50.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
