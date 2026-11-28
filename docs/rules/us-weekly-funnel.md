@@ -339,6 +339,11 @@ lessons apply there.
   RM109.00 / 0 (RM318, 28 landing-page views, 0 registrations). Same videos kept registering in
   Broad A+ (Advantage+ audience ON) — this week, narrowing the audience with interests lost twice
   (V1 × 5 interests, then V5/V6/V7 × 3 audiences).
+- 11/28 operator 「全部跟你的建议」: (1) Business & Industry (V1) +20% RM50 → RM60, scheduled for the
+  start of the KL day 11/29 00:01 (rule-qualified: 3 reg, CPL ≈ 57); (2) new ad set Business & Industry
+  × 新馬 V7 120249432931650259 (ad 120249432932680259) in the interest × V1 campaign, RM50/day, same
+  B&I audience, age 35–65, Advantage+ audience OFF, no Audience Network, end 12/3 09:00 — built by
+  scripts/build_west_dec2_bi_v7.py; operator 「今晚 22:00 开，你帮我开」 → scheduled MYT 11/28 22:00.
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
