@@ -344,6 +344,11 @@ lessons apply there.
   × 新馬 V7 120249432931650259 (ad 120249432932680259) in the interest × V1 campaign, RM50/day, same
   B&I audience, age 35–65, Advantage+ audience OFF, no Audience Network, end 12/3 09:00 — built by
   scripts/build_west_dec2_bi_v7.py; operator 「今晚 22:00 开，你帮我开」 → scheduled MYT 11/28 22:00.
+- 11/28 22:00 B&I × 新馬 V7 switched on (bot). 22:56 a teammate raised B&I (V1) to RM60 in Power
+  Editor before the 00:01 task (same value — task did nothing).
+- 11/29 05:13 Broad A+ 新V5 (RM238 / 2, CPL 119), 新V6 (RM239 / 2, CPL 120), 新馬 V7 (RM227 / 2,
+  CPL 113) paused by the CPL > RM100 rule — no new registrations for ~2 days over the Black Friday
+  weekend. Left running: B&I (V1) RM60 (3 reg, CPL ≈ 78), B&I × 新馬 V7 RM50 (1 reg at RM53 after 7 h).
 
 ## Timing
 - No scheduled start/end times on ad sets. The operator switches sides by hand on Malaysia
